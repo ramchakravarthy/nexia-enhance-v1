@@ -1,0 +1,19 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block titleblock %}
+    Quality management annual declaration - delete declaration
+{% endblock %}
+
+{% block bodyblock %}
+    <form method="post" style="overflow: scroll; height: 75vh">
+        {% csrf_token %}
+
+            <h4>Are you sure you want to delete the evaluation for the year {{ declaration.evaluation_year }}, created on {{ declaration.evaluation_date }} by {{ declaration.individual }}?</h4>
+            <br>
+            <h5><em>This action cannot be reversed</em></h5>
+        <input type="submit" value="Delete" name="delete" class="btn btn-danger">
+        <a href="{% url 'annual_declaration:view-declaration' %}" class="btn btn-light">Cancel</a>
+    </form>
+{% endblock %}

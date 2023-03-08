@@ -1,0 +1,51 @@
+{% extends '00_nexia_enhance_base.html' %}
+
+{% load static %}
+{% load bootstrap5 %}
+
+<!-- Stylesheet from source file -->
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskregister/css/999_OLD_04_a_risk_library_entry.css' %}">
+{% endblock %}
+
+
+<!-- Main Body -->
+{% block bodyblock %}
+
+    <div class="row accounts-content-row">
+        <div class="col"></div>
+        <div class="col-10">
+
+            <!-- Title -->
+            <div class="container-fluid titleblock">
+                <h3>
+                    Risk register
+                </h3>
+                <hr>
+            </div>
+
+            <!-- Main Body Content-->
+            <div class="container-fluid contentblock">
+                <br>
+                <div class="alert alert-success alert-dismissible fade show">
+                    <strong>Success!</strong> The risk has been created successfully.
+                    <br><br>
+                    <p>
+                        {{ rca_rr_id }}
+                    </p>
+                    <a href="{% url 'risk_register:view-risk-register' %}">
+                        <button type="button" class="btn btn-success">Home</button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col"></div>
+    </div>
+
+{% endblock %}
+
+
+<!-- Script from custom source file -->
+{% block script_block %}
+{% endblock %}

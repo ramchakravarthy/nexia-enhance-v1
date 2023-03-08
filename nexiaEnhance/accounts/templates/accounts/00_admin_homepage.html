@@ -1,0 +1,15 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block bodyblock %}
+    <br>
+    <h1>Administration</h1>
+    <br>
+    <h5><em>Choose from the following options:</em></h5>
+
+    <br>
+        <p><a href="{% url 'create-user' %}" class="btn btn-default">Create a user</a></p>
+{#        <p><a href="{% url 'accounts:view-users'%}" class="btn btn-primary">Create Nexia User</a></p>#}
+
+{% endblock %}

@@ -1,0 +1,50 @@
+/*----------- Risk Reg Instructions ------------------*/
+
+/*.card_block{*/
+/*    min-height: 70vh;*/
+/*}*/
+
+div.card {
+  /*width: 250px;*/
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+#card_1{
+    color: #2E53A1;
+}
+
+.col.card_col {
+    text-align: center;
+    align-content: center;
+
+    padding: 2% 2%;
+}
+
+.card-body{
+    min-height: 45vh;
+    padding: 0% 15%;
+}
+
+/*.info-icon{*/
+/*    height: 50px;*/
+/*}*/
+
+i{
+    height: 15vh;
+}
+
+
+/*!* Create Risk Reg Entry*!*/
+/*.col.card_col {*/
+/*    text-align: center;*/
+/*    align-content: center;*/
+/*}*/
+
+a.create_entry_card {
+    text-decoration: none;
+}
+
+.card_text.create_entry_card {
+    text-decoration: none;
+}

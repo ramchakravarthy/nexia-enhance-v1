@@ -1,0 +1,42 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/01_view_risk_reg.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Risk Register - import risk register
+{% endblock %}
+
+{% block style_block_header %}
+{% endblock %}
+
+{% block bodyblock %}
+    {% if can_import %}
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <br>
+            <h4 style="color: #CA1C66">WARNING: Please ensure you do not have any risks in your file that are already in
+                your risk register.</h4>
+            <h4 style="color: #CA1C66">All risks will be added to your existing risk register.</h4>
+            <br>
+
+            {% bootstrap_form form %}
+            <input type="submit" name="Submit" value="Submit" class="btn btn-light">
+            <a href="{% url 'risk_register_2:view-risk-register' %}" class="btn btn-danger">Cancel</a>
+        </form>
+    {% else %}
+        You are not authorised to import a risk register. Please contact your ISQM supervisor.
+    {% endif %}
+
+{% endblock %}
+
+{% block script_block %}
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+{% endblock %}

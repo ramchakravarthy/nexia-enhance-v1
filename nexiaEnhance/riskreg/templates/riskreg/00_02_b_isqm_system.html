@@ -1,0 +1,348 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+
+{% block titleblock %}
+    Instructions: What is in the ISQM system:
+{% endblock %}
+
+{% block bodyblock %}
+    <p>
+        <a href="{% url 'risk-register-2:instructions' %}">
+            <button type="button" class="btn btn-light">
+                <i class="bi bi-backspace-fill" style="color: white"></i> Back
+            </button>
+        </a>
+    </p>
+
+    <div class="isqm_system_text" style="height: 68vh; overflow: auto">
+
+        <p>The ISQM system comprises of three main components:</p>
+
+        <p><strong>1. Risk library</strong></p>
+        <p>The risk library has been designed to assist users of the Mercia Quality Management Manual perform their risk
+    assessment as required by ISQM 1, and to identify the quality objectives relevant to their practice, the
+    possible quality risks that may exist and the potential responses that could be implemented in response to
+    those risks.</p>
+        <p></p>
+        <p>Within the risk library, references to ISQM and ISA are to ISQM and ISA as issued by the IAASB.</p>
+        <p></p>
+        <p><strong>Note:</strong></p>
+        <p>The risk register must be tailored to the specific circumstances of the firm. It is not possible to
+            conceive of all the possible factors affecting a firm and thus it does not provide a definitive list of all
+            the quality objectives, quality risks and potential responses that may exist, and additional items may need
+            to be added in order to ensure that the risk assessment process is effective in ensuring that responses are
+            implemented that address all significant quality risks that may exist.</p>
+        <p></p>
+        <p>In this Excel spreadsheet there is a separate tab for each of the 6 categories of quality objectives
+            identified by ISQM 1. Additional tabs may be created for further quality objectives that are identified by
+            the firm, although this is expected to be rare.</p>
+        <p></p>
+        <p>The risk library is broken down into four columns:</p>
+
+
+        <div class="card_block">
+            <div class="row">
+                <div class="col card_col" style="height: available;">
+                    <div class="card" style="color:white; background-color: #00B9B9; border-top-left-radius: 25px; border-bottom-right-radius: 25px;">
+                        <div class="card-header" style="height: available; color:#0c4128; background-color: white; border-top-left-radius: 25px;">
+                            <strong>
+                                First column: The quality objective category
+                            </strong>
+                        </div>
+                        <div class="card-body" style="height: available; ">
+                            <p class="card-text" style="height: available; ">
+                                The first column lists the 6 categories of quality objectives that have been identified by
+                        ISQM 1. Additional categories may be created by a firm in their risk register for further
+                        quality objectives that are identified by the firm, although this is expected to be rare.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col card_col">
+                    <div class="card" style="color:white; background-color: #2E53A1; border-top-left-radius: 25px; border-bottom-right-radius: 25px; ">
+                        <div class="card-header" style="height: available; color:#2E53A1; background-color: white; border-top-left-radius: 25px;">
+                            <strong>
+                                Second column: The precise detail of the quality objective that firm aims to achieve
+                            </strong>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                The text in the second column that details the quality objectives to be achieved is taken directly from
+                        the text of ISQM 1. It is recommended that this text is not amended in any way or deleted as being not
+                        applicable to the firm, as doing so may have an unforeseen adverse impact on the system of quality
+                        management through the inadvertent removal of part of the objectives. They may though be added to, for any
+                        additional quality objectives that are identified.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col card_col">
+                    <div class="card" style="color:white; background-color: #841262; border-top-left-radius: 25px; border-bottom-right-radius: 25px; ">
+                        <div class="card-header" style="height: available; color:#841262; background-color: white; border-top-left-radius: 25px;">
+                            <strong>
+                                Third column: The potential quality risks that may exist for each aspect of the quality objective
+                            </strong>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                The third column contains one or more possible quality risks that may exist for each aspect of the quality
+                        objective. Although some of these quality risks may be based upon guidance contained in ISQM 1 firms are at
+                        liberty to amend these quality risks as they think fit to best suit their practice. Quality risks may be
+                        removed if it is felt that they do not apply to the firm or added to if additional quality risks are
+                        identified.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col card_col">
+                    <div class="card" style="color:white; background-color: #FBC311; border-top-left-radius: 25px; border-bottom-right-radius: 25px; ">
+                        <div class="card-header" style="height: available; color: #FBC311; background-color: white; border-top-left-radius: 25px;">
+                            <strong>
+                                Fourth column: The possible responses that could be implemented by the firm in respect
+                                of each quality risk
+                            </strong>
+                        </div>
+                        <div class="card-body">
+{#                            <h5 class="card-title">#}
+{#                                Fourth column: The possible responses that could be implemented by the firm in respect#}
+{#                                of each quality risk#}
+{#                            </h5>#}
+                            <p class="card-text">
+                                Lastly the fourth column list possible responses that a firm may wish to implement for
+                                each quality risk.
+                                It is probable that the greatest amount of tailoring will be requires here, to best
+                                reflect the precise
+                                controls and procedures relevant to the firm, its personnel and systems, and the audit
+                                methodology adopted.
+                                Again, firms may find it appropriate to delete responses that are not considered
+                                appropriate to their
+                                circumstances, or to introduce alternative responses that better reflect their position.
+                            </p>
+                        </div>
+{#                        <div class="card-footer text-muted">#}
+{#                            <i class="bi bi-2-square"></i>#}
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <p>
+            <em>
+                <strong>
+                    Further guidance on quality risks:
+                </strong>
+            </em>
+        </p>
+        <p>
+        <p>To assist firms in identifying the quality risks that are relevant to them a system of colour coding has been
+            adopted as follows:</p>
+        <p>· Quality risks shaded in blue are likely to be relevant to firms of all types, regardless of their size and
+            nature, as these relate to aspect of the audit process that will be common to most of not all
+            engagements;</p>
+        <p>· Quality risks shaded in green are more likely to be relevant to larger firms. For example, this could be
+            because there is a large pool of audit principles and staff operating across multiple offices, or because
+            the client base comprises a large range of entity types with complex reporting requirements.</p>
+        <p>· Quality risks shaded in yellow are more likely to be relevant to smaller firms, with only a few audit
+            principles and staff and little variety in the client base that present few complex issues.</p>
+        <p></p>
+        <p>Note that this system of colour coding is presented as a guide only and should be relied upon. It is
+            recommended that all quality risks are considered to determine if they are relevant to the firm. For
+            example, just because a firm is small it doesn’t necessary follow that it only acts for non-complex clients,
+            and quality risks identified as being relevant to larger firms may equally be relevant to such smaller
+            firms.</p>
+        </p>
+
+        <!--
+        <br><br>
+        <table class="table table-striped table-light">
+            <thead>
+                <tr style="background-color: #0c4128; color: white">
+                    <th style="width: 10vw; background-color: #00323C;">First column: The quality objective category</th>
+                    <th style="width: 10vw; background-color: #00323C;">Second column: The precise detail of the quality objective that firm aims to achieve</th>
+                    <th style="width: 20vw; background-color: #00323C;">Third column: The potential quality risks that may exist for each aspect of the quality objective</th>
+                    <th style="width: 10vw; background-color: #00323C;">Fourth column: The possible responses that could be implemented by the firm in respect of each quality risk</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        The first column lists the 6 categories of quality objectives that have been identified by
+                        ISQM 1. Additional categories may be created by a firm in their risk register for further
+                        quality objectives that are identified by the firm, although this is expected to be rare.
+                    </td>
+                    <td>
+                        The text in the second column that details the quality objectives to be achieved is taken directly from
+                        the text of ISQM 1. It is recommended that this text is not amended in any way or deleted as being not
+                        applicable to the firm, as doing so may have an unforeseen adverse impact on the system of quality
+                        management through the inadvertent removal of part of the objectives. They may though be added to, for any
+                        additional quality objectives that are identified.
+                    </td>
+                    <td>
+                        <p>The third column contains one or more possible quality risks that may exist for each aspect of the quality
+                        objective. Although some of these quality risks may be based upon guidance contained in ISQM 1 firms are at
+                        liberty to amend these quality risks as they think fit to best suit their practice. Quality risks may be
+                        removed if it is felt that they do not apply to the firm or added to if additional quality risks are
+                        identified.</p>
+                        <p></p>
+                        <p>To assist firms in identifying the quality risks that are relevant to them a system of colour coding has been
+                            adopted as follows:</p>
+                        <p>· Quality risks shaded in blue are likely to be relevant to firms of all types, regardless of their size and
+                            nature, as these relate to aspect of the audit process that will be common to most of not all
+                            engagements;</p>
+                        <p>· Quality risks shaded in green are more likely to be relevant to larger firms. For example, this could be
+                            because there is a large pool of audit principles and staff operating across multiple offices, or because
+                            the client base comprises a large range of entity types with complex reporting requirements.</p>
+                        <p>· Quality risks shaded in yellow are more likely to be relevant to smaller firms, with only a few audit
+                            principles and staff and little variety in the client base that present few complex issues.</p>
+                        <p></p>
+                        <p>Note that this system of colour coding is presented as a guide only and should be relied upon. It is
+                            recommended that all quality risks are considered to determine if they are relevant to the firm. For
+                            example, just because a firm is small it doesn’t necessary follow that it only acts for non-complex clients,
+                            and quality risks identified as being relevant to larger firms may equally be relevant to such smaller
+                            firms.</p>
+                    </td>
+                    <td>
+                        Lastly the fourth column list possible responses that a firm may wish to implement for each quality risk.
+                        It is probable that the greatest amount of tailoring will be requires here, to best reflect the precise
+                        controls and procedures relevant to the firm, its personnel and systems, and the audit methodology adopted.
+                        Again, firms may find it appropriate to delete responses that are not considered appropriate to their
+                        circumstances, or to introduce alternative responses that better reflect their position.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        -->
+
+<!--
+                <ol>
+                    <li>
+                        <strong>First column: The quality objective category;</strong>
+                        <p>
+                            The first column lists the 6 categories of quality objectives that have been identified by
+                            ISQM 1. Additional categories may be created by a firm in their risk register for further
+                            quality objectives that are identified by the firm, although this is expected to be rare.
+                        </p>
+
+                    </li>
+                    <li>
+                        <strong>Second column: The precise detail of the quality objective that firm aims to achieve;</strong>
+                        <p>The text in the second column that details the quality objectives to be achieved is taken directly from
+                            the text of ISQM 1. It is recommended that this text is not amended in any way or deleted as being not
+                            applicable to the firm, as doing so may have an unforeseen adverse impact on the system of quality
+                            management through the inadvertent removal of part of the objectives. They may though be added to, for any
+                            additional quality objectives that are identified. </p>
+                        <p></p>
+
+                    </li>
+                    <li>
+                        <strong>Third column: The potential quality risks that may exist for each aspect of the quality objective;</strong>
+                        <p>The third column contains one or more possible quality risks that may exist for each aspect of the quality
+                            objective. Although some of these quality risks may be based upon guidance contained in ISQM 1 firms are at
+                            liberty to amend these quality risks as they think fit to best suit their practice. Quality risks may be
+                            removed if it is felt that they do not apply to the firm or added to if additional quality risks are
+                            identified.</p>
+                        <p></p>
+                        <p>To assist firms in identifying the quality risks that are relevant to them a system of colour coding has been
+                            adopted as follows:</p>
+                        <p>· Quality risks shaded in blue are likely to be relevant to firms of all types, regardless of their size and
+                            nature, as these relate to aspect of the audit process that will be common to most of not all
+                            engagements;</p>
+                        <p>· Quality risks shaded in green are more likely to be relevant to larger firms. For example, this could be
+                            because there is a large pool of audit principles and staff operating across multiple offices, or because
+                            the client base comprises a large range of entity types with complex reporting requirements.</p>
+                        <p>· Quality risks shaded in yellow are more likely to be relevant to smaller firms, with only a few audit
+                            principles and staff and little variety in the client base that present few complex issues.</p>
+                        <p></p>
+                        <p>Note that this system of colour coding is presented as a guide only and should be relied upon. It is
+                            recommended that all quality risks are considered to determine if they are relevant to the firm. For
+                            example, just because a firm is small it doesn’t necessary follow that it only acts for non-complex clients,
+                            and quality risks identified as being relevant to larger firms may equally be relevant to such smaller
+                            firms.</p>
+                        <p></p>
+                    </li>
+                    <li>
+                        <strong>Fourth column: The possible responses that could be implemented by the firm in respect of each quality
+                        risk.</strong>
+                        <p>Lastly the fourth column list possible responses that a firm may wish to implement for each quality risk.
+                            It is probable that the greatest amount of tailoring will be requires here, to best reflect the precise
+                            controls and procedures relevant to the firm, its personnel and systems, and the audit methodology adopted.
+                            Again, firms may find it appropriate to delete responses that are not considered appropriate to their
+                            circumstances, or to introduce alternative responses that better reflect their position.</p>
+                        <p></p>
+                    </li>
+                </ol>
+
+-->
+        <p></p>
+
+
+        <p>ISQM 1 and certain other standards do though set out a number of mandatory responses that should be
+            implemented by all firms unless they are deemed irrelevant to their practice. These responses are
+            highlighted in red, and care should be taken before any of these responses are amended or deleted in order
+            to ensure that firms comply with the requirements of the regulatory framework.</p>
+        <p></p>
+        <p>Users of the Mercia audit methodology will find that it contains a number of forms and procedures that will
+            assist with completion of these responses, and these are highlighted here, as are other ways in which Mercia
+            can assist with implementing your system of quality management.</p>
+
+
+
+        <p><strong>2. Risk register</strong></p>
+        <p>
+            Firms should fill out their risk register using the risk library as a basis. For further instructions on
+            how to fill out the risk register, click <a href="{% url 'risk-register-2:instructions-risk-assessment' %}">here</a>.
+        </p>
+        <p><strong>3. Annual declaration</strong></p>
+        <p>
+            An annual recording of the evaluation of the system of quality management that is required.
+        </p>
+        <p></p>
+        <p>
+            The evaluation is broken down into three sections:
+        </p>
+        <ol>
+            <li>Evaluation;</li>
+            <li>Conclusion; and </li>
+            <li>Actions and communications.</li>
+        </ol>
+        <p></p>
+        <p>
+            The annual declaration must be completed and recorded in the online ISQM system. If a declaration has been
+            completed on paper, it should be migrated (contents copied) to the online system.
+        </p>
+
+
+        <p><strong>Other features</strong></p>
+        <p>
+            Other features of the system include Firm and User management.
+        </p>
+        <p>
+            Firm management is restricted to Nexia to ensure all eligible members can record their documentation in the online Nexia Enhance portal.
+        </p>
+        <p>
+            User management is available to all members, to ensure that the appopriate persons are given access to view/fill out assessments and/or other appropriate activities in the Nexia Enhance system.
+        </p>
+        <p>
+            Each member must assign a IT superuser in-charge of Nexia Enhance and this must be communicated to Nexia,
+            should the member choose to fill out their Nexia Enhance assessments using this solution. The IT superuser
+            will then be able to add other users from their organisation, who will then have access to this portal. The
+            IT superuser will be able to create a login id for a user. Each user must set themselves a password using
+            the "forgot password" feature available in the login screen. Unauthorised access is not allowed and firms
+            should ensure that users are only given access to Nexia Enhance if determined appropriate by the
+            organisation's quality management head. Any misuse of the Nexia Enhance solution will be evaluated by the
+            board.
+        </p>
+        <p></p>
+        <hr>
+
+
+
+    </div>
+
+{% endblock %}

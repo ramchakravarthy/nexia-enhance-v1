@@ -1,0 +1,77 @@
+{#------ THIS IS THE FIRST TRIAL WITH DIFFERENT LOOPS AND SLICES AND FUNCTIONS ------#}
+
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/02_01_risk_library_entry.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Risk register - delete entry
+{% endblock %}
+
+{% block bodyblock %}
+
+    <div class="row risk_reg_selection">
+            <div class="custom_risk_container">
+                <h3>Do you want to delete the following entry:</h3>
+                <br>
+
+                <div class="row">
+                    <div class="col-3">
+                        <strong>Quality Objective Category</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{ risk_reg_entry.quality_objective_category }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <strong>Quality Objective</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{ risk_reg_entry.quality_objective }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <strong>Quality Risk</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{ risk_reg_entry.quality_risk }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <strong>Risk response</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{ risk_reg_entry.risk_response }}</p>
+                    </div>
+                </div>
+
+                <br>
+                <h4>This action cannot be reversed</h4>
+
+            </div>
+        </div>
+
+
+
+
+
+
+    <form method="POST">
+        {% csrf_token %}
+        <br>
+        <input type="submit" class="btn btn-danger" value="Delete">
+
+        <a href="{% url 'risk-register-2:view-risk-register' %}"><input type="button" value="Cancel" class="btn btn-light"></a>
+{#        <a href="{% url 'risk-register-2:view-risk-register' %}">#}
+{#            <button class="btn btn-light">Cancel</button>#}
+{#        </a>#}
+    </form>
+
+{% endblock %}

@@ -1,0 +1,256 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block titleblock %}
+    Quality management annual declaration - view declaration
+{% endblock %}
+
+{% block bodyblock %}
+    <form method="post" style="overflow: auto; height: 77vh;">
+        {% csrf_token %}
+
+    <h3>Owner and dates</h3>
+
+
+    <table class="table align-middle table-bordered table-sm table-light table-striped table-hover" id="myTable2">
+            <tbody>
+            <tr>
+                <td>
+                    <strong>Individual assigned ultimate responsibility and accountability for the system of quality management:</strong>
+                </td>
+                <td>
+                    {{ declaration.individual }}
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <strong>Evaluation date:</strong>
+                </td>
+                <td>
+                    {{ declaration.evaluation_date }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Previous evaluation date:</strong>
+                </td>
+                <td>
+                     {{ declaration.previous_evaluation_date }}
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <br>
+
+        <h3>Evaluation</h3>
+
+        <table class="table align-middle table-bordered table-sm table-light table-striped table-hover" id="myTable2">
+            <tbody>
+            <tr>
+                <td>
+                    I confirm that on behalf of the firm as a whole I have performed an evaluation of the firm’s system
+                    of quality management in accordance with the requirements set out in ISQM 1 Quality management for
+                    firms that perform audits or reviews of financial statements, or other assurance or related services
+                    engagement.
+                </td>
+                <td>
+{#                    {% bootstrap_field form.evaluation_1 show_label=False %}#}
+{#                    {{ declaration.evaluation_1 }}#}
+                    {% if declaration.evaluation_1 == True %}&#10004;{% else %}&times;{% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>This evaluation included review of the following:</p>
+                    <ul>
+                        <li>Communication received related to the monitoring and remediation procedures undertaken since
+                            the date of the previous evaluation, including:
+                        </li>
+                        <ul>
+                            <li>A description of the monitoring activities performed;</li>
+
+                            <li>The identified deficiencies, including the severity and pervasiveness of such
+                                deficiencies; and
+                            </li>
+                            <li>The remedial actions to address the identified deficiencies.</li>
+                        </ul>
+
+
+                        <li>The results of regulatory inspections undertaken by the regulatory authority since the date
+                            of
+                            the
+                            previous evaluation;
+                        </li>
+                        <li>results of any monitoring activities performed by the network to which the firm belongs
+                            since
+                            the date of the last evaluation.
+                        </li>
+                    </ul>
+                </td>
+                <td>
+{#                    {% bootstrap_field form.evaluation_2 show_label=False %}#}
+{#                    {{ declaration.evaluation_2 }}#}
+                    {% if declaration.evaluation_2 == True %}&#10004;{% else %}&times;{% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>In performing my evaluation of the system of quality management I have:</p>
+                    <ul>
+                        <li>Considered the severity and pervasiveness of the identified deficiencies that have been
+                            brought to my attention, and their effect on the achievement of the objectives of the system
+                            of quality management;
+                        </li>
+                        <li>Considered whether remedial actions have been designed and implemented by the firm, and
+                            whether those remedial actions taken up to the time of this evaluation are proving to be
+                            effective; and
+
+
+                        </li>
+                        <li>Considered whether the effect of identified deficiencies on the system of quality management
+                            have been appropriately corrected, and whether any necessary further action has been taken.
+                        </li>
+                    </ul>
+                </td>
+                <td>
+{#                    {% bootstrap_field form.evaluation_3 show_label=False %}#}
+{#                    {{ declaration.evaluation_3 }}#}
+                    {% if declaration.evaluation_3 == True %}&#10004;{% else %}&times;{% endif %}
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <br>
+
+        <h3>Conclusions</h3>
+        <p>Tick as appropriate.</p>
+
+
+        <table class="table align-middle table-bordered table-sm table-light table-striped table-hover" id="myTable2">
+            <tbody>
+            <tr>
+                <td>
+                    Based upon my evaluation, on behalf of the firm I have concluded as follows (tick as appropriate):
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    a) That the system of quality management provides the firm with reasonable assurance that the
+                    objectives of the system of quality management are being achieved;
+                </td>
+                <td>
+{#                    {% bootstrap_field form.conclusion_1 show_label=False %}#}
+{#                    {{ declaration.conclusion_1 }}#}
+                    {% if declaration.conclusion_1 == True %}&#10004;{% else %}&times;{% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    b) That except for matters related to identified deficiencies that have a severe but not pervasive
+                    effect on the design, implementation and operation of the system of quality management, the system
+                    of quality management provides the firm with reasonable assurance that the objectives of the system
+                    of quality management are being achieved; or
+                </td>
+                <td>
+{#                    {% bootstrap_field form.conclusion_2 show_label=False %}#}
+{#                    {{ declaration.conclusion_2 }}#}
+                    {% if declaration.conclusion_2 == True %}&#10004;{% else %}&times;{% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    c) That the system of quality management does not provide the firm with reasonable assurance that
+                    the objectives of the system of quality management are being achieved.
+                </td>
+                <td>
+{#                    {% bootstrap_field form.conclusion_3 show_label=False %}#}
+{#                    {{ declaration.conclusion_3 }}#}
+                    {% if declaration.conclusion_3 == True %}&#10004;{% else %}&times;{% endif %}
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <br>
+
+
+        <h3>Actions and communication</h3>
+        <p>Tick as appropriate.</p>
+
+
+        <table class="table align-middle table-bordered table-sm table-light table-striped table-hover" id="myTable2">
+            <tbody>
+            <tr>
+                <td>
+                    In the event of the conclusion being either (b) or (c) above (tick as appropriate):
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    i) I can confirm that prompt and appropriate action will be taken to address the issues highlighted
+                    by my evaluation. This action includes the following:
+                </td>
+                <td>
+{#                    {% bootstrap_field form.actions_and_communications_1 show_label=False %}#}
+{#                    {{ declaration.actions_and_communications_1 }}#}
+                    {% if declaration.actions_and_communications_1 == True %}&#10004;{% else %}&times;{% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+{#                    {% bootstrap_field form.actions_and_communications_1_b show_label=False placeholder="Please input actions as deemed appropriate." %}#}
+                    {{ declaration.actions_and_communications_1_b }}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    ii) Appropriate communication to engagement teams and other individuals assigned activities within
+                    the system of quality management has been made to the extent that it is relevant to their
+                    responsibilities; and
+                </td>
+                <td>
+{#                    {% bootstrap_field form.actions_and_communications_2 show_label=False %}#}
+{#                    {{ declaration.actions_and_communications_2 }}#}
+                    {% if declaration.actions_and_communications_2 == True %}&#10004;{% else %}&times;{% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    iii) Appropriate communication has been made to external parties in accordance with the firm’s
+                    policies and procedures, including to those charged with governance in respect of the firm’s listed
+                    entity audit engagements.
+                </td>
+                <td>
+{#                    {% bootstrap_field form.actions_and_communications_3 show_label=False %}#}
+{#                    {{ declaration.actions_and_communications_3 }}#}
+                    {% if declaration.actions_and_communications_3 == True %}&#10004;{% else %}&times;{% endif %}
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <br>
+
+        <a href="{% url 'annual_declaration:edit-declaration' pk=declaration.id%}" class="btn btn-light">
+            Edit
+        </a>
+        <a href="{% url 'annual_declaration:view-declaration' %}" class="btn btn-danger">
+            Back
+        </a>
+        <br>
+    </form>
+    <br>
+{% endblock %}

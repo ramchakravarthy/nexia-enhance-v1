@@ -1,0 +1,38 @@
+{% extends 'accounts/00_accounts_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block titleblock %}
+    User administration - edit user
+{% endblock %}
+
+{% block contentblock %}
+
+    {% if user.is_authenticated %}
+
+        {% if is_nexia_superuser or is_user_manager %}
+            <form method="POST">
+                {% csrf_token %}
+
+                <!-- Form to input User model attriibutes - name, email, etc -->
+                {% bootstrap_form user_form %}
+                <!-- Form to input additional user attributes - rights and roles -->
+                {% bootstrap_form user_attributes_form %}
+
+                <!-- hidden value to pass the primary key from get to post -->
+                <input type="hidden" id="user_ref" name="user_ref" value={{ user_pk }}>
+
+                <input type="submit" class="btn btn-light" value="Submit">
+                <a href="{% url 'accounts:view-users' %}"><input type="button" class="btn btn-danger" value="Cancel"></a>
+            </form>
+        {% else %}
+            {{ error_text }}
+        {% endif %}
+
+    {% else %}
+        Please login to continue.
+    {% endif %}
+
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block bodyblock %}
+    <h1>Risk register</h1>
+    <br>
+
+    <H4>Risk register:</H4>
+
+    <p><strong>Number of categories:</strong> {{ categories.count }}</p>
+
+    {% if categories.count %}
+        <ul>
+            {% for category in categories %}
+            <li>
+                <a href="{% url 'risk_register:cat-detail-view' pk=category.id %}">Category: {{ category }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+        
+    {% else %}
+        <p>Zero</p>
+    {% endif %}
+
+    
+
+    <br>
+
+    <h4>Firm:</h4>
+    <p>{{ firm }}</p>
+    <ul>
+
+        <li></li>
+    </ul>
+{% endblock %}

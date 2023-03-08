@@ -1,0 +1,131 @@
+/* ---------------- Overall ---------------- */
+
+body {
+    color: #0d5257
+}
+
+/* ----------------MAIN GRID SETTINGS---------------- */
+.grid-container.parent {
+    display: grid;
+    grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw; /*{#-- 10 columns #}*/
+    grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh; /*{#-- 10 rows #}*/
+    background-color: lightgray;
+}
+
+/* ----------------END OF MAIN GRID SETTINGS---------------- */
+
+
+/* ----------------Sidebar---------------- */
+.grid-item.sidebar {
+    background-color: #0d5257;
+    /*background-color: rgba(0, 178, 169, 0.9);*/
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 10;
+    color: white;
+    /*text-align: center;*/
+}
+
+a.sidebar_logo {
+    text-align: center;
+}
+
+img.sidebar_logo {
+    width: 5vw;
+    /*{#width: 25px;#} */
+    padding: 25px 0px 50px;
+
+}
+
+.sidebar_link {
+    text-decoration: none;
+    color: white;
+}
+
+ul.list-unstyled {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+    text-decoration: none;
+}
+
+button.level_1, a.level_2 {
+    color: white;
+}
+
+button + .level_1 {
+    font-size: medium;
+}
+
+button.level_1:hover, a.level_2:hover {
+    color: lightgray;
+}
+
+.level_2 {
+    margin-left: 8px;
+}
+
+a.level_2 {
+    font-size: small;
+    text-decoration: none;
+    color: white;
+}
+/* ----------------End of Sidebar---------------- */
+
+/* ----------------Navbar---------------- */
+
+.grid-item.nav-bar {
+    grid-column: 2 / span 9;
+    grid-row: 1 / span 1;
+}
+
+.navbar {
+    margin: 10px 10px 0 10px;
+    border-radius: 10px;
+}
+/* ----------------End of Navbar---------------- */
+
+/* ----------------Body---------------- */
+.grid-item.body {
+    grid-column: 2 / span 9;
+    /*TODO: CHANGE THE BELOW TO 2 AND 9 WHEN INCLUDING A NAVBAR*/
+    grid-row: 1 / span 10;
+    /*overflow:scroll;*/
+}
+
+.main_body {
+    margin: 0 10px 20px 10px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 2%;
+    min-height: 88vh;
+    max-height: 88vh;
+}
+
+.title_block {
+    height: 8vh;
+}
+
+.body_block {
+    height: 75vh;
+    overflow: auto;
+}
+
+
+.selection_icon {
+    width: 30vw;
+}
+
+/*-------------------------------- Cards ---------------------------------*/
+
+.selection_card {
+    border-radius: 50px;
+    border-color: #00b2a9;
+    border-width: thick;
+}
+
+.card .text-center {
+    border-radius: 50px;
+    border-color: #00b2a9;
+    border-width: thick;
+}

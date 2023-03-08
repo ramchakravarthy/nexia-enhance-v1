@@ -1,0 +1,282 @@
+{% load static %}
+<div class="container-fluid">
+
+    <!-- Sidebar Logo -->
+    <a href="https://nexia.com/" class="sidebar_logo">
+        <img class="sidebar_logo" src="{% static 'images_dev/02_logos/01_nexia_enhance_white.png' %}" alt="Nexia.com">
+    </a>
+
+{#    <img src="{% static 'media/profile_pics/Nexia_Light_Graphics_06.jpg' %}" alt="Background" class="sidebar_background_image">#}
+    <br><br>
+    <!-- End of Sidebar Logo -->
+
+    <!-- Sidebar Navigations -->
+    <ul class="list-unstyled ps-0">
+
+        {% if user.is_authenticated %}
+
+            <!-- HOME-->
+            <li class="mb-1">
+                <p>
+                    <a href="{% url 'risk_register_2:risk_reg_home_view' %}">
+                        <button class="btn align-items-center rounded level_1" style="font-size: medium;">
+                            Home
+                        </button>
+                    </a>
+                </p>
+            </li>
+
+            <div class="sidebar_hr_div">
+                <hr class="sidebar_hr" style="height: 3px">
+            </div>
+
+            <!-- INSTRUCTIONS-->
+            <li class="mb-1">
+                <p>
+                    <a href="{% url 'risk-register-2:instructions' %}">
+                        <button class="btn align-items-center rounded level_1" style="font-size: medium;">
+                            Instructions
+                        </button>
+                    </a>
+                </p>
+            </li>
+
+
+{#                        <li class="level_2"><a href="{% url 'risk-register-2:instructions' %}"#}
+{#                                               class="link-light rounded level_2"><em>Instructions</em></a></li>#}
+
+            <!-- RISK LIBRARY OPTIONS-->
+
+            <div class="sidebar_hr_div">
+                <hr class="sidebar_hr" style="height: 3px">
+            </div>
+            <li class="mb-1" >
+                <p>
+                    <button class="btn btn-toggle align-items-center rounded collapsed level_1"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#risk-library-collapse" aria-expanded="false" style="font-size: medium;">
+                        Risk Library
+                    </button>
+                </p>
+                <div class="collapse level_2" id="risk-library-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small level_2">
+                        <li class="level_2">
+                            <a href="{% url 'risk_database:view-risk-database' %}" class="link-light rounded level_2">
+                                <em>View library</em>
+                            </a>
+                        </li>
+                        <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                        {% if is_nexia_superuser %}
+                            <li class="level_2">
+                                <a href="{% url 'risk_database:import-risk-database' %}"
+                                   class="link-light rounded level_2">
+                                    <em>Import risk library</em>
+                                </a>
+                            </li>
+                            <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                        {% endif %}
+                        <li class="level_2">
+                            <a href="{% url 'risk_database:export_risk_library' %}" class="link-light rounded level_2">
+                                <em>Export risk library</em>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <!-- RISK REGISTER 2 OPTIONS-->
+            <div class="sidebar_hr_div">
+                <hr class="sidebar_hr" style="height: 3px">
+            </div>
+{#            <li class="border-top my-3"></li>#}
+            <li class="mb-1">
+                <p>
+                    <button class="btn btn-toggle align-items-center rounded collapsed level_1"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#risk-register-2-collapse" aria-expanded="false" style="font-size: medium;">
+                        Risk Register
+                    </button>
+                </p>
+                <div class="collapse level_2" id="risk-register-2-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small level_2">
+                        <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                        <li class="level_2"><a href="{% url 'risk-register-2:view-risk-register' %}"
+                                               class="link-light rounded level_2"><em>View register</em></a></li>
+                        <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                        <li class="level_2"><a href="{% url 'risk-register-2:create-risk-reg-entry' %}"
+                                               class="link-light rounded level_2"><em>Create entry</em></a></li>
+                        <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                        <!--
+                        <li class="level_2"><a href="{% url 'risk-register-2:view-risk-register' %}"
+                                               class="link-light rounded level_2"><em>Preparer sign off</em></a>
+                        </li>
+                        <hr>
+                        <li class="level_2"><a href="{% url 'risk-register-2:view-risk-register' %}"
+                                               class="link-light rounded level_2"><em>Reviewer sign off</em></a>
+                        </li>
+                        <hr>
+                        -->
+                        <li class="level_2"><a href="{% url 'risk-register-2:view-deficiencies' %}"
+                                               class="link-light rounded level_2"><em>View deficiencies</em></a>
+                        </li>
+                        <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                        <li class="level_2"><a href="{% url 'risk-register-2:view-risk-register' %}"
+                                               class="link-light rounded level_2"><em>Annual declaration</em></a>
+                        </li>
+                        <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                        <!--
+                        <li class="level_2"><a href="#" class="link-light rounded level_2"
+                                               onclick="window.open('risk-reg-export-to-excel-2')"><em>OLD Export risk
+                            register</em></a>
+                        </li>
+                        <hr>
+                        -->
+                        <li>
+                            <a href="{% url 'risk_register_2:export-risk-register' %}" class="link-light rounded level_2">
+                                <em>Export risk register</em>
+                            </a>
+                        </li>
+                        <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                        <li>
+                            <a href="{% url 'risk_register_2:import-risk-register' %}" class="link-light rounded level_2">
+                                <em>Import risk register</em>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- ANNUAL DECLARATION OPTIONS-->
+
+            <div class="sidebar_hr_div">
+                <hr class="sidebar_hr" style="height: 3px">
+            </div>
+{#            <li class="border-top my-3"></li>#}
+            <li class="mb-1">
+            <p>
+                <button class="btn btn-toggle align-items-center rounded collapsed level_1" data-bs-toggle="collapse"
+                        data-bs-target="#annual-declaration-collapse_2" aria-expanded="false" style="font-size: medium;">
+                    Annual Declaration
+                </button>
+            </p>
+            <div class="collapse level_2" id="annual-declaration-collapse_2">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small level_2">
+                    <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                    <li class="level_2"><a href="{% url 'annual_declaration:date-test' %}"
+                                           class="link-dark rounded level_2"><em>Make declaration</em></a>
+                    </li>
+{#                    <hr>#}
+{#                    <li class="level_2"><a href="{% url 'annual_declaration:make-declaration' %}"#}
+{#                                           class="link-dark rounded level_2"><em>Make declaration</em></a></li>#}
+                    <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                    <li class="level_2"><a href="{% url 'annual_declaration:view-declaration' %}"
+                                           class="link-dark rounded level_2"><em>View declarations</em></a></li>
+{#                    <hr>#}
+{#                    <li class="level_2"><a href="{% url 'annual_declaration:view-declaration' %}"#}
+{#                                           class="link-dark rounded level_2"><em>View declarations</em></a></li>#}
+                </ul>
+            </div>
+        </li>
+
+
+
+            {% if is_user_manager %}
+                {% if is_nexia_superuser %}
+
+                    <!-- FIRM ADMINISTRATION-->
+
+{#                    <li class="border-top my-3"></li>#}
+                    <div class="sidebar_hr_div">
+                        <hr class="sidebar_hr" style="height: 3px">
+                    </div>
+                    <li class="mb-1">
+                        <p>
+                            <button class="btn btn-toggle align-items-center rounded collapsed level_1"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#firm-admin-collapse" aria-expanded="false"
+                                    style="font-size: medium;">
+                                Firm administration
+                            </button>
+                        </p>
+                        <div class="collapse level_2" id="firm-admin-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small level_2">
+                                <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                                <li class="level_2"><a href="{% url 'accounts:view-firms' %}"
+                                                       class="link-light rounded level_2"><em>View firms</em></a></li>
+                                <div class="sidebar_hr_div"><hr class="sidebar_hr"></div>
+                                <li class="level_2"><a href="{% url 'accounts:create-firm' %}"
+                                                       class="link-light rounded level_2"><em>Add firm</em></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                {% endif %}
+
+                <!-- USER ADMINISTRATION-->
+
+{#                <li class="border-top my-3"></li>#}
+                <div class="sidebar_hr_div">
+                    <hr class="sidebar_hr" style="height: 3px">
+                </div>
+                <li class="mb-1">
+                    <p>
+                        <button class="btn btn-toggle align-items-center rounded collapsed level_1"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#user-admin-collapse" aria-expanded="false" style="font-size: medium;">
+                            User administration
+                        </button>
+                    </p>
+                    <div class="collapse level_2" id="user-admin-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small level_2">
+                            <hr>
+                            <li class="level_2"><a href="{% url 'accounts:view-users' %}"
+                                                   class="link-light rounded level_2"><em>View users</em></a></li>
+                            <hr>
+                            <li class="level_2"><a href="{% url 'accounts:create-user' %}"
+                                                   class="link-light rounded level_2"><em>Add user</em></a></li>
+                        </ul>
+                    </div>
+                </li>
+
+            {% endif %}
+
+            <!-- ACCOUNT OPTIONS-->
+
+{#            <li class="border-top my-3"></li>#}
+            <div class="sidebar_hr_div">
+                <hr class="sidebar_hr" style="height: 3px">
+            </div>
+            <li class="mb-1">
+                <button class="btn btn-toggle align-items-left rounded collapsed level_1" data-bs-toggle="collapse"
+                        data-bs-target="#account-collapse" aria-expanded="false" style="font-size: medium;">
+                    {{ user.first_name }} {{ user.last_name }}
+                </button>
+                <div class="collapse level_2" id="account-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small level_2">
+                        <hr>
+                        <li class="level_2"><a href="{% url 'accounts:password_change' %}"
+                                               class="link-light rounded level_2"><em>Change password</em></a></li>
+                        <hr>
+                        <li class="level_2"><a href="{% url 'accounts:logout' %}"
+                                               class="link-light rounded level_2"><em>Logout</em></a></li>
+                    </ul>
+                </div>
+            </li>
+{#            <li class="border-top my-3"></li>#}
+            <div class="sidebar_hr_div">
+                <hr class="sidebar_hr" style="height: 3px">
+            </div>
+
+        {% else %}
+            <!-- User login -->
+            <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed level_1" data-bs-toggle=""
+                        style="font-size: medium;">
+                    <a href="{% url 'accounts:login' %}" class="nav-link">Click here to log in</a>
+                </button>
+            </li>
+        {% endif %}
+
+    </ul>
+</div>

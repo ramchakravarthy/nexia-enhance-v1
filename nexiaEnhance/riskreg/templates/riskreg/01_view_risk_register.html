@@ -1,0 +1,125 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/01_view_risk_reg.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    {% if is_risk_reg_empty %}
+        Welcome to Nexia Enhance
+    {% else %}
+        Risk register
+    {% endif %}
+{% endblock %}
+
+{% block style_block_header %}
+{% endblock %}
+
+{% block bodyblock %}
+{#    <br>#}
+{#    <p>#}
+{#        {{ quill_obj|safe }}#}
+{#    </p>#}
+
+{#    <br><br>#}
+
+
+    {% if is_viewer %}
+        {% if is_risk_reg_empty %}
+            <br><br>
+            <h4>Please click on "Instructions" to the left to learn about the ISQM system.</h4>
+            <br>
+            <h4>To create a risk, please use the options to the left under "Risk register".</h4>
+            <br><br><br><br><br><br>
+            <img src="{% static 'images_dev/02_logos/01_nexia_enhance_white.png' %}" alt="" style="width: 100vw;" >
+
+        {% else %}
+            <div class="view_register_table" style="height: 80vh;">
+                <div class="table-responsive" id="risk_reg_table">
+                    <table class="table table-striped table-hover table-xs" id="myTable">
+                        <thead>
+                            <tr style="background-color: #00323C; color: white; font-size: small;">
+                                <th>Quality Objective Category</th>
+                                <th class="desc_cell">Quality Objective</th>
+                                <th>Quality Risk</th>
+                                <!--<th>Quality Risk Firm Size</th>-->
+                                <th>Risk Response</th>
+                                <!--<th>Risk    Response Mandatory?</th>-->
+                                <!--<th>Risk Response Firm Size</th>-->
+                                <th>Owner</th>
+                                <th>Response type</th>
+                                <th>Response status</th>
+                                <th>Comments</th>
+                                <th>Review frequency</th>
+                                <th>Created by</th>
+                                <th>Owner</th>
+                                <th>Reviewer</th>
+        {#                        <th></th>#}
+        {#                        <th></th>#}
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for risk in rr_dict %}
+                            <tr style="font-size: small;">
+                                <td class="c_tr">{{ risk.quality_objective_category }}</td>
+                                <td class="o_tr desc_cell">{{ risk.quality_objective }}</td>
+                                <td class="r_tr desc_cell">{{ risk.quality_risk }}</td>
+                                <!--<td class="desc_cell">{{ risk.quality_risk_firm_size }}</td>-->
+                                <td class="rr_tr">{{ risk.risk_response }}</td>
+                                <!--<td>{{ risk.response_mandatory }}</td>-->
+                                <!--<td>{{ risk.risk_response_firm_size }}</td>-->
+                                <td>{{ risk.owner }}</td>
+                                <td>{{ risk.response_type }}</td>
+                                <td>{{ risk.response_status }}</td>
+                                <td>{{ risk.comments }}</td>
+                                <td>{{ risk.frequency_of_review }}</td>
+                                <td>{{ risk.created_by }}</td>
+                                <td>{{ risk.sign_off_owner }}</td>
+                                <td>{{ risk.sign_off_reviewer }}</td>
+                                <td>
+                                    <a href="{% url 'risk-register-2:view-deficiencies' %}" class="btn btn-xs btn-light" style="font-size: small; background-color: #FBC311" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Number of deficiencies"><i style="color: white; background-color: #FBC311" class="bi bi-{{ risk.identified_deficiency_id }}-circle"></i></a>
+{#                                    <a href="{% url 'risk-register-2:view-deficiencies' %}" class="btn btn-xs btn-light" style="font-size: small; background-color: #FBC311" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Number of deficiencies"><div style="color: white; background-color: #FBC311;">{{ risk.identified_deficiency_id }}</div></a>#}
+
+
+        {#                            <button class="btn btn-sm btn-light" type="submit" value="Update existing risk response" name={{ deficiency.identified_deficiency_id }} data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Update existing risk response" style="color: white; font-weight: bold; background-color: #ED9034">#}
+        {#                                    <i class="bi bi-arrow-clockwise"></i>#}
+        {#                                </button>#}
+        {##}
+        {#                                <a class="btn btn-sm btn-light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit"#}
+        {#                                   href="{% url 'risk_register_2:edit-deficiency' pk=deficiency.identified_deficiency_id %}">#}
+
+        {#                                </a>#}
+        {##}
+        {#                                <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete"#}
+        {#                                   href="{% url 'risk_register_2:delete-deficiency' pk=deficiency.identified_deficiency_id %}">#}
+        {#                                    <i class="bi bi-x-lg"></i>#}
+        {#                                </a>#}
+                                    <a href="{% url 'risk-register-2:edit-risk-library-entry' pk=risk.id %}" class="btn btn-xs btn-light" style="font-size: small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
+        {#                        </td>#}
+        {#                        <td>#}
+                                    <a href="{% url 'risk-register-2:delete-risk-library-entry' pk=risk.id %}" class="btn btn-xs btn-danger" style="font-size: small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-x-lg"></i></a>
+        {#                        </td>#}
+        {#                        <td>#}
+                                    <a href="{% url 'risk-register-2:create-deficiency' rr_id=risk.id %}" class="btn btn-light" style="font-size: small; color: white; font-weight: bold; background-color: #ED9034" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Create deficiency" ><i class="bi bi-exclamation-lg"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+
+{% endblock %}
+
+{% block script_block %}
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+{% endblock %}

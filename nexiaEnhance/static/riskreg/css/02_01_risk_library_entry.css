@@ -1,0 +1,122 @@
+/*!* Scroll properties *!*/
+
+/*.mainbodycontent{*/
+/*    overflow: visible;*/
+/*}*/
+
+/*-------------------------------- Background and blocks ---------------------------------*/
+
+.row.risk_reg_selection {
+    width: 82vw;
+    padding: 1% 0%;
+}
+
+.custom_risk_container{
+    max-height: 70vh;
+    max-width: 82vw;
+    overflow-y: auto;
+}
+
+.col-1.cat_pills, .col-3.obj_pills, .col-3.risk, .col.risk_response {
+    min-height: 70vh;
+    border-radius: 10px;
+    text-align: center;
+    margin-right: 0.5%;
+    overflow-y: auto;
+    height: 70vh;
+
+}
+
+/*.col-3.obj_pills, .col-3.risk, .col.risk_response {*/
+/*    overflow-y: auto;*/
+/*}*/
+
+.col-1.cat_pills {
+    width: 8vw;
+    background-color: rgba(0, 50, 60, 0.1);
+    /*OLD:*/
+    /*background-color: rgba(18, 82, 87, 0.1);*/
+}
+
+.col-3.obj_pills {
+    width: 20vw;
+    background-color: rgba(25, 133, 195, 0.1);
+    /*OLD:*/
+    /*background-color: rgba(22, 133, 194, 0.1);*/
+}
+
+.col-3.risk {
+    width: 20vw;
+    background-color: rgba(132, 18, 98, 0.1);
+    /*OLD:*/
+    /*background-color: rgba(132, 18, 98, 0.1);*/
+}
+
+.col.risk_response {
+    background-color: rgba(202, 28, 102, 0.05);
+    /*OLD:*/
+    /*background-color: rgba(202, 15, 100, 0.05);*/
+}
+/*-------------------------------- End of Background and blocks ---------------------------------*/
+
+/*-------------------------------- Pills setup ---------------------------------*/
+.nav-item{
+    margin-right:2px;
+    margin-bottom: 5px;
+}
+
+a.nav-link.cat_pill, a.nav-link.obj_pill, a.nav-link.risk_pill {
+    background-color: lightgray;
+    border-radius: 10px;
+    color: black;
+    margin: 2px 0px;
+    font-size: small;
+    padding: 1%;
+}
+
+a.nav-link.cat_pill {
+    min-height: 9vh;
+}
+/*-------------------------------- End of Pills setup ---------------------------------*/
+
+/*-------------------------------- Active Pill Colours ---------------------------------*/
+
+.nav-pills .nav-link.cat_pill.active {
+    /* Teal */
+    /*background-color: rgba(0,178,169,1); */
+    /*Dark Teal*/
+    background-color: rgba(0, 50, 60, 1);
+}
+
+.nav-pills .nav-link.obj_pill.active {
+    background-color: rgba(25, 133, 195, 1);
+}
+
+.nav-pills .nav-link.risk_pill.active {
+    background-color: rgba(132, 18, 98, 1);
+}
+
+/*-------------------------------- End of Active Pill Colours ---------------------------------*/
+
+/*-------------------------------- Risk Response & Attributes ---------------------------------*/
+
+.table{
+    font-size: small;
+}
+
+.rr_cell {
+    min-width: 20vw;
+    border-color: rgba(202, 28, 102, 1);
+}
+
+.rr_td {
+    text-align: center;
+    border-color: rgba(202, 28, 102, 1);
+}
+
+thead>tr{
+    background-color: rgba(202, 28, 102, 1);
+    color: white;
+}
+
+/*-------------------------------- End of Risk Response & Attributes ---------------------------------*/

@@ -1,0 +1,21 @@
+/*.view_risk_database_table{*/
+/*    max-height: 75vh;*/
+/*    overflow: auto;*/
+/*}*/
+
+#risk_reg_table{
+    max-height: 75vh;
+    overflow: auto;
+}
+
+table{
+    font-size: small;
+}
+
+thead > th {
+    background-color: #00323C;
+}
+
+a{
+    text-decoration: none;
+}

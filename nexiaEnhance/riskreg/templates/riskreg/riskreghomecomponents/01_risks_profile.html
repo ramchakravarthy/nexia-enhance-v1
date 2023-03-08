@@ -1,0 +1,157 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/00_risk_register_home.css' %}">
+{% endblock %}
+
+{% block script_block_header %}
+
+{% endblock %}
+
+{% block titleblock %}
+    Risk register dashboard
+{% endblock %}
+
+{% block bodyblock %}
+
+    <div>
+
+        <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link rr_dashboard" href="{% url 'risk_register_2:risk_reg_home_view' %}">KPIs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'risk_register_2:risk_reg_home_view_risk_profile' %}">Quality Risks Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rr_dashboard" href="{% url 'risk_register_2:risk_reg_home_view_risk_response_profile' %}">Risk Responses Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rr_dashboard" href="{% url 'risk_register_2:risk_reg_home_view_data_quality_summary' %}">Data Quality Summary</a>
+        </li>
+        <li class="nav-item">
+                        <a class="nav-link rr_dashboard" href="{% url 'risk_register_2:risk_reg_home_view_deficiencies_action_plan_view' %}">Deficiencies Action Plan</a>
+        </li>
+    </ul>
+
+        <div class="tab-content" style="overflow: auto; height: 75vh">
+            <div class="tab-pane show active" id="risks-profile">
+                <div class="row dashboard-row">
+                    <h3>Risks profile</h3>
+                    <div class="row dashboard-sub-row">
+                        <div class="col dashboard-col">
+                            <span class="chart_title">Number of quality risks per owner</span>
+                            <div class="container chart_container" style="width: 90%; height: 30vh">
+                                <canvas id="c_1"></canvas>
+                            </div>
+                        </div>
+                        <div class="col dashboard-col">
+                            <span class="chart_title">Number of quality risks per quality risk category</span>
+                            <div class="container chart_container" style="width: 90%; height: 30vh">
+                                <canvas id="c_2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row dashboard-sub-row">
+                        <div class="col dashboard-col">
+                            <span class="chart_title">Distribution of number of quality risks per quality objective</span>
+                            <div class="container chart_container" style="width: 90%; height: 30vh">
+                                <canvas id="c_3"></canvas>
+                            </div>
+                        </div>
+                        <div class="col dashboard-col">
+                            <span class="chart_title">Distribution of number of risk responses per quality risks</span>
+                            <div class="container chart_container" style="width: 90%; height: 30vh">
+                                <canvas id="c_4"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+
+<script>
+    Chart.register(ChartDataLabels);
+
+    var chart_data_dict = JSON.parse("{{chart_data|escapejs}}");
+    for (var chart in chart_data_dict) {
+        var ct = chart_data_dict[chart]["chart_type"];
+
+        var ctx = document.getElementById(chart_data_dict[chart]["chart_id"]).getContext('2d');
+        var new_chart = new Chart(ctx, {
+            type: ct,
+            data: {
+                labels: chart_data_dict[chart]["labels"],
+                datasets: [{
+                    data: chart_data_dict[chart]["data"],
+                    label: chart_data_dict[chart]["data_label"],
+                    backgroundColor: chart_data_dict[chart]["colours"],
+                }]
+            },
+            options: {
+                circumference: chart_data_dict[chart]["circumference"],
+                rotation: chart_data_dict[chart]["rotation_angle"],
+                maintainAspectRatio: false,
+                responsive: true,
+                indexAxis: chart_data_dict[chart]["index_axis"],
+                plugins: {
+                    datalabels: { // This code is used to display data values
+                        {#anchor: 'middle',#}
+                        {#align: 'centre',#}
+                        font: {
+                            weight: 'bold',
+                            size: 16,
+                        },
+                        {#color: '#FFFFFF',#}
+                    }
+                }
+            }
+        });
+        new_chart.options.plugins.datalabels.formatter = function (value) {
+            if ((ct == "pie") || (ct == "doughnut")) {
+                return value + '%';
+            } else {
+                return value;
+            }
+        };
+        new_chart.options.plugins.datalabels.color = function (value) {
+            if ((ct == "pie") || (ct == "doughnut")) {
+                return "#FFFFFF";
+            } else {
+                return "#000000";
+            }
+        };
+        new_chart.options.plugins.datalabels.anchor = function (value) {
+            if ((ct == "pie") || (ct == "doughnut")) {
+                return "middle";
+            } else {
+                return "middle";
+            }
+        };
+        new_chart.options.plugins.datalabels.align = function (value) {
+            if ((ct == "pie") || (ct == "doughnut")) {
+                return "centre";
+            } else {
+                return "centre";
+            }
+        };
+        new_chart.options.plugins.legend.position= "bottom";
+
+        new_chart.update();
+    }
+
+</script>
+
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,30 @@
+.contentblock{
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 25px;
+    padding: 2%;
+    color: black;
+    overflow: auto;
+}
+th{
+    font-size: small;
+}
+
+td{
+    font-size: small;
+}
+
+.c_tr{
+    min-width: 11vw;
+}
+
+.o_tr{
+    min-width: 15vw;
+}
+
+.r_tr{
+    min-width: 15vw;
+}
+
+.rr_tr{
+    min-width: 20vw;
+}

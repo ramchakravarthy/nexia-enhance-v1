@@ -1,0 +1,14 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+    <h1>Cat detail</h1>
+    <br>
+{% for category in categories.objectives.all %}
+    <p>Objective: {{ category.quality_objective }}</p>
+{#    <p>{{ category. }}</p>#}
+    {% endfor %}
+
+{% endblock %}

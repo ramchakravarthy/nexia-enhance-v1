@@ -1,0 +1,29 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block titleblock %}
+    Import risk library
+{% endblock %}
+
+{% block bodyblock %}
+
+    {% if is_nexia_superuser %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <h5>Choose a file to upload</h5>
+            <p>Ensure the file is in an excel (xlsx) format with the same column names as per the Mercia risk
+                library.</p>
+
+            {% bootstrap_form import_file_form %}
+
+            <input type="submit" value="Confirm upload" class="btn btn-light">
+            <a href="{% url 'risk_database:view-risk-database' %}" class="btn btn-danger">Back</a>
+
+        </form>
+    {% else %}
+        You are not authorised to import risks into the risk library. Please contact Paul Ginman.
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,99 @@
+/*-------------------------------- Background and blocks ---------------------------------*/
+
+.row.risk_reg_selection {
+    width: 85vw;
+    padding: 1%;
+}
+
+.cat_pills, .obj_pills, .risk, .risk_response {
+    min-height: 65vh;
+    border-radius: 10px;
+    text-align: center;
+    margin-right: 0.5%;
+}
+
+.obj_pills, .risk, .risk_response {
+    overflow-y: auto;
+}
+
+.cat_pills {
+    max-width: 8vw;
+    background-color: rgba(18, 82, 87, 0.1);
+}
+
+.obj_pills {
+    max-width: 20vw;
+    background-color: rgba(22, 133, 194, 0.1);
+}
+
+.risk {
+    max-width: 20vw;
+    background-color: rgba(132, 18, 98, 0.1);
+}
+
+.risk_response {
+    background-color: rgba(202, 15, 100, 0.05);
+}
+/*-------------------------------- End of Background and blocks ---------------------------------*/
+
+/*-------------------------------- Pills setup ---------------------------------*/
+.nav-item{
+    margin-right:2px;
+    margin-bottom: 5px;
+}
+
+a.nav-link.cat_pill, a.nav-link.obj_pill, a.nav-link.risk_pill {
+    background-color: lightgray;
+    border-radius: 10px;
+    color: black;
+    margin: 2px 0px;
+    font-size: small;
+    padding: 1%;
+}
+
+a.nav-link.cat_pill {
+    min-height: 9vh;
+}
+/*-------------------------------- End of Pills setup ---------------------------------*/
+
+/*-------------------------------- Active Pill Colours ---------------------------------*/
+
+.nav-pills .nav-link.cat_pill.active {
+    /* Teal */
+    /*background-color: rgba(0,178,169,1); */
+    /*Dark Teal*/
+    background-color: rgba(18, 82, 87, 1);
+}
+
+.nav-pills .nav-link.obj_pill.active {
+    background-color: rgba(22, 133, 194, 1);
+}
+
+.nav-pills .nav-link.risk_pill.active {
+    background-color: rgba(132, 18, 98, 1);
+}
+
+/*-------------------------------- End of Active Pill Colours ---------------------------------*/
+
+/*-------------------------------- Risk Response & Attributes ---------------------------------*/
+
+.table{
+    font-size: small;
+}
+
+.rr_cell {
+    min-width: 20vw;
+    border-color: rgba(202, 15, 100, 1);
+}
+
+.rr_td {
+    text-align: center;
+    border-color: rgba(202, 15, 100, 1);
+}
+
+thead>tr{
+    background-color: rgba(202, 15, 100, 1);
+    color: white;
+}
+
+/*-------------------------------- End of Risk Response & Attributes ---------------------------------*/

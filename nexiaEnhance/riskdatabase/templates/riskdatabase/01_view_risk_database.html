@@ -1,0 +1,119 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+
+<!-- Stylesheet from source file -->
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskdatabase/css/riskdatabase.css' %}">
+{% endblock %}
+
+
+{% block titleblock %}
+    Risk library
+{% endblock %}
+
+{% block bodyblock %}
+    {% if is_viewer %}
+        <div class="view_risk_database_table">
+            <div class="table-responsive" id="risk_reg_table">
+                <table class="table table-striped table-hover table-xs" id="myTable">
+                    <thead>
+                    <tr style="background-color: #00323C; color: white;">
+                        <th>Category</th>
+                        <th>Objective</th>
+                        <th>Risk</th>
+                        <th>Risk response</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for risk in risk_database_combined %}
+                        <tr>
+                            <td>
+                                <p>
+                                    {{ risk.quality_objective_category }}
+                                </p>
+                                {% if is_nexia_superuser %}
+                                    <p>
+                                        <a href="{% url 'risk_database:update-category' pk=risk.quality_objective_category_id %}"
+                                           style="text-decoration: none">
+                                            <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Edit"><i class="bi bi-pencil"></i>
+                                            </button>
+                                        </a>
+                                        <a href="{% url 'risk_database:delete-category' pk=risk.quality_objective_category_id %}"
+                                           style="text-decoration: none">
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Delete"><i class="bi bi-x-lg"></i>
+                                            </button>
+                                        </a>
+                                    </p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <p>{{ risk.quality_objective }}</p>
+                                {% if is_nexia_superuser %}
+                                    <p>
+                                        <a href="{% url 'risk_database:update-objective' pk=risk.quality_objective_id %}"
+                                           style="text-decoration: none">
+                                            <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Edit"><i class="bi bi-pencil"></i>
+                                            </button>
+                                        </a>
+                                        <a href="{% url 'risk_database:delete-objective' pk=risk.quality_objective_id %}"
+                                           style="text-decoration: none">
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Delete"><i class="bi bi-x-lg"></i>
+                                            </button>
+                                        </a>
+                                    </p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <p>{{ risk.quality_risk }}</p>
+                                {% if is_nexia_superuser %}
+                                    <p>
+                                        <a href="{% url 'risk_database:update-risk' pk=risk.quality_risk_id %}"
+                                           style="text-decoration: none">
+                                            <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Edit"><i class="bi bi-pencil"></i>
+                                            </button>
+                                        </a>
+                                        <a href="{% url 'risk_database:delete-risk' pk=risk.quality_risk_id %}"
+                                           style="text-decoration: none">
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Delete"><i class="bi bi-x-lg"></i>
+                                            </button>
+                                        </a>
+                                    </p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <p>{{ risk.risk_response }}</p>
+                                {% if is_nexia_superuser %}
+                                    <p>
+                                        <a href="{% url 'risk_database:update-rr' pk=risk.risk_response_id %}"
+                                           style="text-decoration: none">
+                                            <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Edit"><i class="bi bi-pencil"></i>
+                                            </button>
+                                        </a>
+                                        <a href="{% url 'risk_database:delete-rr' pk=risk.risk_response_id %}"
+                                           style="text-decoration: none">
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Delete"><i class="bi bi-x-lg"></i>
+                                            </button>
+                                        </a>
+                                    </p>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <h5>You are not authorised to view this data. Please contact your ISQM administrator.</h5>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block script_block %}
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+{% endblock %}

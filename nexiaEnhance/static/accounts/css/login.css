@@ -1,0 +1,60 @@
+/*.login_background{*/
+/*    background-image: url('static/media/profile_pics/Nexia_Background.png');*/
+/*    background-repeat: no-repeat;*/
+/*    background-position-x: right;*/
+/*    background-position-y: bottom;*/
+/*}*/
+
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 99vw;
+  /*min-height: 100%;*/
+}
+
+.login_background_image{
+    position: fixed;
+    background-position-x: right;
+    background-position-y: bottom;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.login-box {
+    color: white;
+    padding: 3% 5%;
+    border-radius: 25px;
+    max-width: 30vw;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(245,245,245,0.5);
+    /*background-color: whitesmoke;*/
+}
+
+/* ----------------Buttons - submit, cancel, etc---------------- */
+.btn-light{
+    background-color: #00B9B9;
+    color: white;
+    border-style: none;
+}
+
+.btn-light:hover{
+    background-color: rgba(0,185,185,0.8);
+    color: white;
+    border-style: none;
+}
+
+.btn-danger{
+    background-color: #CA1C66;
+    /*background-color: rgba(202,28,102,1);*/
+}
+
+.btn-danger:hover{
+    background-color: rgba(202,28,102,0.8);
+}

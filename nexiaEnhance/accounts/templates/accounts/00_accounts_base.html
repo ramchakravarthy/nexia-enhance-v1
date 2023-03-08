@@ -1,0 +1,27 @@
+{% extends '00_nexia_enhance_base.html' %}
+
+{% load static %}
+{% load bootstrap5 %}
+
+<!-- Stylesheet from source file -->
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'accounts/css/accounts.css' %}">
+{% endblock %}
+
+
+<!-- Main Body -->
+{% block bodyblock %}
+
+    <!-- Main Body Content-->
+    <div class="contentblock" style="overflow: auto; height: 75vh">
+        <br>
+        {% block contentblock %}
+        {% endblock %}
+    </div>
+
+{% endblock %}
+
+
+<!-- Script from custom source file -->
+{% block script_block %}
+{% endblock %}

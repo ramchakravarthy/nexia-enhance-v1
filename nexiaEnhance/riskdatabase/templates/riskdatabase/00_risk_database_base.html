@@ -1,0 +1,21 @@
+{% extends '00_nexia_enhance_base.html' %}
+
+{% load static %}
+{% load bootstrap5 %}
+
+
+
+<!-- Main Body -->
+{% block bodyblock %}
+    <!-- Main Body Content-->
+    <div class="container-fluid contentblock">
+
+        {% block contentblock %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
+<!-- Script from custom source file -->
+{% block script_block %}
+{% endblock %}

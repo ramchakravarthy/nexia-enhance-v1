@@ -1,0 +1,25 @@
+{% extends '00_nexia_enhance_base.html' %}
+
+{% block titleblock %}
+    Welcome to Nexia Enhance
+{% endblock %}
+
+{% block bodyblock %}
+
+    <h4>Temporary Index Page</h4>
+
+    <p>User: {{ user }}</p>
+    <p>User attr: {{ userattributes }}</p>
+    <p>Firms: {{ firm }}</p>
+
+    <br>
+
+    <a href="{% url 'accounts:view-firms' %}">
+        <h4>View Firms</h4>
+    </a>
+
+    <a href="{% url 'accounts:view-users' %}">
+        <h4>Views Users</h4>
+    </a>
+
+{% endblock %}

@@ -1,0 +1,173 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/00_risk_register_home.css' %}">
+{% endblock %}
+
+{% block script_block_header %}
+
+{% endblock %}
+
+{% block titleblock %}
+    Risk register dashboard
+{% endblock %}
+
+{% block bodyblock %}
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link rr_dashboard" href="{% url 'risk_register_2:risk_reg_home_view' %}">KPIs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rr_dashboard" href="{% url 'risk_register_2:risk_reg_home_view_risk_profile' %}">Quality Risks Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rr_dashboard" href="{% url 'risk_register_2:risk_reg_home_view_risk_response_profile' %}">Risk Responses Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'risk_register_2:risk_reg_home_view_data_quality_summary' %}">Data Quality Summary</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rr_dashboard" href="{% url 'risk_register_2:risk_reg_home_view_deficiencies_action_plan_view' %}">Deficiencies Action Plan</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" style="overflow: auto; height: 75vh">
+        <div class="tab-pane show active" id="risk-response-profile">
+{#            <div class="row dashboard-row">#}
+{#                <h3>Data Quality</h3>#}
+{#            </div>#}
+            <div class="row dashboard-row">
+                <div class="col dashboard-col">
+                    <span class="chart_title">Risk register entries with missing values</span>
+                    <div class="container chart_container"style="width: 90%; height: 95%">
+                        <canvas id="e_1"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row dashboard-row">
+
+                    <span class="chart_title">Duplicate risk register entries</span><h3></h3>
+                    <div class="col dashboard-col">
+                        {% if table_data %}
+                            <table class="table table-sm table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Quality Objective Category</th>
+                                    <th>Quality Objective</th>
+                                    <th>Quality Risk</th>
+                                    <th>Risk Response</th>
+                                    <th>Owner</th>
+                                    <th>Response type</th>
+                                    <th>Response status</th>
+                                    <th>Comments</th>
+                                    <th>Review frequency</th>
+                                    <th>Created by</th>
+                                    <th>Owner sign off</th>
+                                    <th>Reviewer sign off</th>
+
+                                </tr>
+                                </thead>
+
+                                {% for risk in table_data %}
+                                    <tr>
+                                        <td>{{ risk.quality_objective_category }}</td>
+                                        <td>{{ risk.quality_objective }}</td>
+                                        <td>{{ risk.quality_risk }}</td>
+                                        <td>{{ risk.risk_response }}</td>
+                                        <td>{{ risk.owner }}</td>
+                                        <td>{{ risk.response_type }}</td>
+                                        <td>{{ risk.response_status }}</td>
+                                        <td>{{ risk.comments }}</td>
+                                        <td>{{ risk.frequency_of_review }}</td>
+                                        <td>{{ risk.created_by }}</td>
+                                        <td>{{ risk.sign_off_owner }}</td>
+                                        <td>{{ risk.sign_off_reviewer }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                            </table>
+                        {% else %}
+                            <h5>No duplicates found in risk register.</h5>
+                        {% endif %}
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+
+<script>
+
+    var chart_data_dict = JSON.parse("{{chart_data|escapejs}}");
+    for (var chart in chart_data_dict) {
+        var ct = chart_data_dict[chart]["chart_type"];
+
+        var ctx = document.getElementById(chart_data_dict[chart]["chart_id"]).getContext('2d');
+        var new_chart = new Chart(ctx, {
+            type: ct,
+            data: {
+                labels: chart_data_dict[chart]["labels"],
+                datasets: [{
+                    axis: 'y',
+                    data: chart_data_dict[chart]["data"],
+                    label: chart_data_dict[chart]["data_label"],
+                    backgroundColor: chart_data_dict[chart]["colours"],
+                }]
+            },
+            options: {
+                circumference: chart_data_dict[chart]["circumference"],
+                rotation: chart_data_dict[chart]["rotation_angle"],
+                maintainAspectRatio: false,
+                responsive: true,
+                indexAxis: chart_data_dict[chart]["index_axis"],
+
+            }
+        });
+
+        new_chart.options.plugins.legend.position= "bottom";
+
+
+
+        new_chart.update();
+    }
+
+</script>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

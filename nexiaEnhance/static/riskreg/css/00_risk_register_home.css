@@ -1,0 +1,63 @@
+.dashboard-row{
+    /*border-style: dashed;*/
+    /*border-color: black;*/
+    /*border-width: thin;*/
+    padding: 1%;
+    margin: 1% 0%;
+    text-align: center;
+
+}
+
+.dashboard-col{
+    box-shadow: 10px 10px 5px #aaaaaa;
+    margin: 0% 0% 1%;
+}
+
+.dashboard-sub-row{
+    margin: 1% 0%;
+}
+
+.chart_container{
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+
+canvas{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.number_container{
+    font-size: 5rem;
+    color: #00B9B9;
+}
+
+.kpi_number{
+    font-size: 5rem;
+    color: #00b2a9;
+}
+
+a.nav-link.rr_dashboard{
+    color: grey;
+    font-weight: bold;
+}
+
+.nav-tabs .nav-link.active{
+    color:#00b2a9;
+    font-weight: bold;
+}
+
+h5.chart_title{
+    font-size: large;
+    font-weight: bold;
+}
+
+th{
+    font-size: small;
+}
+
+td{
+    font-size: small;
+}

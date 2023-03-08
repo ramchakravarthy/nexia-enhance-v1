@@ -1,0 +1,23 @@
+tbody > tr > th{
+    font-size: small;
+}
+
+tbody > tr > td{
+    font-size: small;
+}
+
+.c_tr{
+    min-width: 11vw;
+}
+
+.o_tr{
+    min-width: 15vw;
+}
+
+.r_tr{
+    min-width: 15vw;
+}
+
+.rr_tr{
+    min-width: 20vw;
+}

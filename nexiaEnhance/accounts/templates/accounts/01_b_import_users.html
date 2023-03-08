@@ -1,0 +1,35 @@
+{# NOT SURE IF WE NEED BULK UPLOAD USERS? #}
+
+{# IT MAY BE EASY TO ADD USERS AS REQUIRED? #}
+
+
+
+
+
+
+
+{% extends 'accounts/00_accounts_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block titleblock %}
+    User administration - import users
+{% endblock %}
+
+{% block contentblock %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <h5><strong>Instructions:</strong></h5>
+        <br>
+        <ul>
+            <li>Download a list of <strong>ACTIVE</strong> contacts only from your CRM.</li>
+            <li>Ensure that the file has two columns: "User name" and "Firm domain". The file will not be uploaded if it is not in the right format.</li>
+            <li>Please select the file to upload a list of firms and click on submit.</li>
+        </ul>
+
+        {% bootstrap_form form %}
+        <input type="submit" value="Submit" class="btn btn-light">
+        <a href="{% url 'accounts:view-firms' %} "><input type="button" value="Cancel" class="btn btn-danger"></a>
+    </form>
+{% endblock %}

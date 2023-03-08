@@ -1,0 +1,210 @@
+{#------ THIS IS THE FIRST TRIAL WITH DIFFERENT LOOPS AND SLICES AND FUNCTIONS ------#}
+
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/02_01_risk_library_entry.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Risk library selection
+{% endblock %}
+
+{% block bodyblock %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row risk_reg_selection">
+
+            <!-- Category selection -->
+            <div class="col-1 cat_pills">
+                <ul class="nav flex-column nav-pills">
+                    <p><h5>Category</h5></p>
+
+                    {% for cat in cat_obj_matrix %}
+                        <li class="nav-item">
+                            <a class="nav-link cat_pill" data-bs-toggle="pill" id="category_pill"
+                               href={{ "#"|add:cat.category_id }}>
+                                <p>{{ cat.category }}</p>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- End of Category selection -->
+
+            <!-- Objective selection -->
+            <div class="col-3 obj_pills">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    {% for cat in cat_obj_matrix %}
+                        <div class="tab-pane container fade" id={{ cat.category_id }}>
+                            <ul class="nav flex-column nav-pills">
+                                <p><h5>Objective</h5></p>
+                                {% for objectives in cat.objectives %}
+                                    <li class="nav-item">
+                                        <a class="nav-link obj_pill" data-bs-toggle="pill"
+                                           href={{ "#"|add:objectives.objective_id }}>{{ objectives.objective }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- End of Objective selection -->
+
+            <!-- Risk  selection -->
+            <div class="col-3 risk">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    {% for obj in obj_risk_matrix %}
+                        <div class="tab-pane container fade" id={{ obj.objective_id }}>
+                            <ul class="nav flex-column nav-pills">
+                                <p><h5>Risk</h5></p>
+                                {% for risks in obj.risks %}
+                                    <li class="nav-item">
+                                        <a class="nav-link risk_pill" data-bs-toggle="pill"
+                                           href={{ "#"|add:risks.quality_risk_id }}>{{ risks.quality_risk }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- End of Risk  selection -->
+
+            <!-- Risk Response selection -->
+            <div class="col risk_response">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    {% for risk in risk_rr_matrix %}
+                        <div class="tab-pane container fade" id={{ risk.quality_risk_id }}>
+                            <p><h5>Risk response and associated answers</h5></p>
+
+                            <table class="table" id="rr_table">
+                                <thead>
+                                <tr id="rr_selection_head">
+                                    <th>Risk Response</th>
+                                    <th>Selection</th>
+                                    <th >Owner</th>
+                                    <th>Response type</th>
+                                    <th>Response status</th>
+                                    <th>Comments</th>
+                                    <th>Review frequency</th>
+                                    <th>Sign off owner</th>
+                                    <th>Sign off reviewer</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for rr in risk.rr %}
+
+                                        <tr id={{ rr.risk_response_id|add:"_row" }} class="rr_row">
+                                            <td class="rr_cell">
+                                                {{ rr.risk_response }}
+                                            </td>
+                                            <td class="rr_td"><input type="checkbox"
+                                                                     onclick="display_attributes('{{ rr.risk_response_id }}')"
+                                                                     id={{ rr.risk_response_id|add:"_selection" }}
+                                                                             name={{ rr.risk_response_id|add:"_selection" }}>
+
+                                            <td class="rr_td ">
+                                                <input type="text" label="Owner" style="display:none"
+                                                       class={{ rr.risk_response_id|add:"_attributes form-control" }}
+                                                               name={{ rr.risk_response_id|add:"_owner" }}>
+                                            </td>
+                                            <td class="rr_td a">
+                                                <select style="display:none"
+                                                        class={{ rr.risk_response_id|add:"_attributes form-select" }}
+                                                                name={{ rr.risk_response_id|add:"_risk_response_type" }}>
+                                                    <option value="">---</option>
+                                                    <option value="off_the_shelf_software">Off-the-shelf software
+                                                    </option>
+                                                    <option value='in-house_software'>In-house software</option>
+                                                    <option value='certificates'>Certificates</option>
+                                                    <option value='documented_policy'>Documented policy</option>
+                                                    <option value='documented_procedure'>Documented procedure</option>
+                                                    <option value='other'>Other</option>
+                                                </select>
+                                            </td>
+                                            <td class="rr_td">
+                                                <select id="risk_response_status" style="display:none"
+                                                        class={{ rr.risk_response_id|add:"_attributes form-select" }}
+                                                                name={{ rr.risk_response_id|add:"_risk_response_status" }}>
+                                                    <option value="">---</option>
+                                                    <option value="in_place">in place</option>
+                                                    <option value="in_progress">in progress</option>
+                                                    <option value="yet_to_be_started">yet to be started</option>
+                                                </select>
+                                            </td>
+                                            <td class="rr_td"><textarea type="textarea" style="display:none"
+                                                                        class={{ rr.risk_response_id|add:"_attributes form-control" }}
+                                                                                name={{ rr.risk_response_id|add:"_comments" }}></textarea>
+                                            </td>
+                                            <td class="rr_td">
+                                                <select id="review_frequency" style="display:none"
+                                                        class={{ rr.risk_response_id|add:"_attributes form-select" }}
+                                                                name={{ rr.risk_response_id|add:"_review_frequency" }}>
+                                                    <option value="">---</option>
+                                                    <option value="weekly">Weekly</option>
+                                                    <option value="monthly">Monthly</option>
+                                                    <option value="quarterly">Quarterly</option>
+                                                    <option value="annually">Annually</option>
+                                                </select>
+                                            </td>
+                                            <td class="rr_td ">
+                                                <input type="text" label="Sign off owner" style="display:none"
+                                                       class={{ rr.risk_response_id|add:"_attributes form-control" }}
+                                                               name={{ rr.risk_response_id|add:"_sign_off_owner" }}>
+                                            </td>
+                                            <td class="rr_td ">
+                                                <input type="text" label="Sign off reviewer" style="display:none"
+                                                       class={{ rr.risk_response_id|add:"_attributes form-control" }}
+                                                               name={{ rr.risk_response_id|add:"_sign_off_reviewer" }}>
+                                            </td>
+                                        </tr>
+
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- End of Risk Response selection -->
+
+        </div>
+
+        <input type="submit" class='btn btn-light' value="Submit">
+        <a href="{% url 'risk_register_2:risk_reg_home_view' %}" class="btn btn-danger">Cancel</a>
+    </form>
+
+{% endblock %}
+
+
+{% block script_block %}
+    <script>
+        function display_attributes(rr) {
+            {#document.write(rr)#}
+            var elements = document.getElementsByClassName(rr+"_attributes" )
+            var checkbox_element = document.getElementById(rr+"_selection")
+            var tr_row_element = document.getElementById(rr+"_row")
+            var td_elements = document.getElementsByClassName('rr_td '+rr);
+
+            if (checkbox_element.checked == true){
+                for (var i = 0; i < elements.length ; i++){
+                    elements[i].style.display = 'block';
+                }
+                tr_row_element.style.backgroundColor = 'rgba(202,15,100,0.05)';
+            }
+            else{
+                for (var i =0; i<elements.length;i++){
+                    elements[i].style.display='none';
+                }
+                tr_row_element.style.backgroundColor = 'transparent';
+            }
+
+        }
+    </script>
+{% endblock %}

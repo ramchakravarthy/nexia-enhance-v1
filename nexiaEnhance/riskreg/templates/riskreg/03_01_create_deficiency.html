@@ -1,0 +1,310 @@
+{#------ THIS IS THE FIRST TRIAL WITH DIFFERENT LOOPS AND SLICES AND FUNCTIONS ------#}
+
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/03_01_create_deficiency.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Create deficiency
+{% endblock %}
+
+{% block bodyblock %}
+    <div class="create_deficiency_block">
+        <form method="POST">
+            {% csrf_token %}
+
+            {% if does_form_data_exist %}
+                <div class="row">
+                    <div class="col-3">
+                        <strong>Quality objective category</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{ cat }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <strong>Quality objective</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{ obj }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <strong>Quality risk</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{ risk }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <strong>Risk response</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{ rr }}</p>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Identified deficiency-->
+                <strong>Identified deficiency</strong>
+                <div style="background-color: white;">
+                    {{ create_deficiency_form.identified_deficiency }}
+                </div>
+                <br>
+
+                <!-- Immediate cause-->
+                <div class="row">
+                    <strong>Immediate cause</strong>
+                        <hr>
+                    <div class="col">
+                        <strong>Description</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.immediate_cause }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <strong>Reviewer comments</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.immediate_cause_reviewer_comments }}
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- First contributory cause-->
+                <div class="row">
+                    <strong>First contributory cause</strong>
+                        <hr>
+                    <div class="col">
+                        <strong>Description</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.contributory_cause_1 }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <strong>Reviewer comments</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.contributory_cause_1_reviewer_comments }}
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Second contributory cause-->
+                <div class="row">
+                    <strong>Second contributory cause</strong>
+                        <hr>
+                    <div class="col">
+                        <strong>Description</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.contributory_cause_2 }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <strong>Reviewer comments</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.contributory_cause_2_reviewer_comments }}
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Third contributory cause-->
+                <div class="row">
+                    <strong>Third contributory cause</strong>
+                        <hr>
+                    <div class="col">
+                        <strong>Description</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.contributory_cause_3 }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <strong>Reviewer comments</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.contributory_cause_3_reviewer_comments }}
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Root cause-->
+                <div class="row">
+                    <strong>Root cause</strong>
+                        <hr>
+                    <div class="col">
+                        <strong>Description</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.root_cause }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <strong>Reviewer comments</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.root_cause_reviewer_comments }}
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Severity-->
+                <div class="row">
+                    <strong>Is the deficiency severe?</strong>
+                        <hr>
+                    <div class="col-2">
+                        <strong>Please tick if it is severe</strong>
+                        <div >
+                            {{ create_deficiency_form.is_severe }}
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <strong>Please enter comments only if the deficiency is severe</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.is_severe_comments }}
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Pervasive-->
+                <div class="row">
+                    <strong>Is the deficiency pervasive?</strong>
+                        <hr>
+                    <div class="col-2">
+                        <strong>Please tick if it is pervasive</strong>
+                        <div >
+                            {{ create_deficiency_form.is_pervasive }}
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <strong>Please enter comments only if the deficiency is pervasive</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.is_pervasive_comments }}
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Proposed remedial action-->
+                <div class="row">
+                    <strong>Proposed remedial action</strong>
+                        <hr>
+                    <div class="col">
+                        <strong>Description</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.proposed_remedial_action }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <strong>Reviewer comments</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.proposed_remedial_action_reviewer_comments }}
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <strong>Status</strong>
+                <div style="background-color: white;">
+                    {% bootstrap_field create_deficiency_form.proposed_remedial_action_status show_label=False %}
+                </div>
+                <br>
+
+                <!-- Remedial action conclusion-->
+                <div class="row">
+                    <strong>Remedial action conclusion</strong>
+                        <hr>
+                    <div class="col">
+                        <strong>Conclusion</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.remedial_action_conclusion }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <strong>What has changed as a result of the remedial action?</strong>
+                        <div style="background-color: white;">
+                            {{ create_deficiency_form.remedial_action_change }}
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Sign off-->
+                <div class="row">
+                    <strong>Sign offs</strong>
+                        <hr>
+                    <div class="col">
+                        <strong>Preparer</strong>
+                        <div style="background-color: white;">
+                            {% bootstrap_field create_deficiency_form.preparer_signature show_label=False %}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <strong>Reviewer</strong>
+                        <div style="background-color: white;">
+                            {% bootstrap_field create_deficiency_form.quality_management_head_signature show_label=False %}
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- New risk response-->
+                <div class="row">
+                    <strong>New risk response</strong>
+                        <hr>
+                    <div class="col">
+                        <strong>Description</strong>
+                        {% bootstrap_field create_deficiency_form.new_risk_response show_label=False %}
+{#                        <div style="background-color: white;">#}
+{#                            {{ create_deficiency_form.new_risk_response }}#}
+{#                        </div>#}
+                    </div>
+
+                </div>
+                <br>
+
+                <br>
+                <p><input type="hidden" value="{{ rr_id }}" name="risk_response_id"></p>
+
+                <input type="submit" class='btn btn-light' value="Submit">
+
+                <a href="{% url 'risk-register-2:view-risk-register' %}"><input type="button" value="Cancel" class="btn btn-danger"></a>
+                <br>
+            {% endif %}
+        </form>
+    </div>
+
+{% endblock %}
+
+
+{% block script_block %}
+    <script>
+        function display_attributes(rr) {
+            {#document.write(rr)#}
+            var elements = document.getElementsByClassName(rr+"_attributes" )
+            var checkbox_element = document.getElementById(rr+"_selection")
+            var tr_row_element = document.getElementById(rr+"_row")
+            var td_elements = document.getElementsByClassName('rr_td '+rr);
+
+            if (checkbox_element.checked == true){
+                for (var i = 0; i < elements.length ; i++){
+                    elements[i].style.display = 'block';
+                }
+                tr_row_element.style.backgroundColor = 'rgba(202,15,100,0.05)';
+            }
+            else{
+                for (var i =0; i<elements.length;i++){
+                    elements[i].style.display='none';
+                }
+                tr_row_element.style.backgroundColor = 'transparent';
+            }
+
+        }
+    </script>
+{% endblock %}

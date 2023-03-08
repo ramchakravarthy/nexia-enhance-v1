@@ -1,0 +1,28 @@
+{% extends "00_nexia_enhance_base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block script_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/03_01_create_deficiency.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    {% if not form.instance.pk %}
+        Create deficiency
+    {% else %}
+        Update deficiency
+    {% endif %}
+{% endblock %}
+
+{% block bodyblock %}
+    <div class="create_deficiency_block">
+        <form method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <p>
+                <input type="submit" class='btn btn-light' value="Submit">
+                <a href="{% url 'risk-register-2:view-deficiencies' %}"><input type="button" value="Cancel" class="btn btn-danger"></a>
+            </p>
+        </form>
+    </div>
+{% endblock %}

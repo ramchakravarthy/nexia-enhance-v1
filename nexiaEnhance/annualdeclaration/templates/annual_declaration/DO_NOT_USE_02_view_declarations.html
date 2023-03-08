@@ -1,0 +1,55 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+
+{% block titleblock %}
+    Risk Register - Annual Declarations
+{% endblock %}
+
+{% block bodyblock %}
+    <br>
+    <br>
+    <div class="container-fluid" style="overflow: scroll; height: 75vh; width: 75vw">
+
+        <table class="table table-sm table-striped table-hover" id="myTable">
+            <thead style="position: sticky;top: 0;">
+            <tr style="background-color: #0d5257; color: #FFFFFF">
+                <th>Year</th>
+                <th class="desc_cell">Sign off comments</th>
+                <th>Sign off</th>
+            </tr>
+
+
+            </thead>
+            <tbody>q
+            {% for sign_off in annual_declaration %}
+                <tr>
+                    <td class="">{{ sign_off.year }}</td>
+                    <td class="desc_cell">{{ sign_off.sign_off_comments }}</td>
+                    <td class="">{{ sign_off.name }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+        <p>
+{#            <a href="{% url 'annual_declaration:make-declaration' %}">#}
+{#                <button class="btn btn-secondary">#}
+{#                    Make new declaration#}
+{#                </button>#}
+{#            </a>#}
+        </p>
+
+
+    </div>
+
+{% endblock %}
+
+
+{% block script_block %}
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+{% endblock %}

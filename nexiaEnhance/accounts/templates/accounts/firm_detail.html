@@ -1,0 +1,26 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block bodyblock %}
+    <p><strong>
+        Firm Details:
+    </strong></p>
+{#    <ul>#}
+{#        <li>Firm: {{ firm.firm_name }}</li>#}
+{#        <li>Firm domain: {{ firm.firm_domain }}</li>#}
+{#    </ul>#}
+
+    {{ firm_detail.firm_name }}
+
+    {% for user in {{ firm_detail }} %}
+        <ul>
+            <li>
+                <a href="">
+                    {{ firm. }}
+                </a>
+            </li>
+        </ul>
+
+    {% endfor %}
+{% endblock %}

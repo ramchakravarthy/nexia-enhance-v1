@@ -1,0 +1,33 @@
+{% extends "riskdatabase/00_risk_database_base.html" %}
+
+{% block titleblock %}
+    Risk library - Delete quality objective category
+{% endblock %}
+
+{% block contentblock %}
+    {% if user.is_authenticated %}
+        <h3>Are you sure you want to delete the quality objective category:</h3>
+        <br>
+        <h5><em>"{{ riskdatabase_01_qualityobjectivecategory.quality_objective_category }}"</em></h5>
+        <br>
+        <h5><em>(This action cannot be reversed)</em></h5>
+        <br>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+               <div class="col-1">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+               </div>
+                <div class="col-1">
+                    <a href="{% url 'risk_database:view-risk-database' %} "><input type="button" class="btn btn-light" value="cancel"></a>
+               </div>
+            </div>
+        </form>
+
+    {% else %}
+        Please login to continue.
+    {% endif %}
+
+
+{% endblock %}

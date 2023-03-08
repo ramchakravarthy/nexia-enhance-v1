@@ -1,0 +1,109 @@
+{% extends 'riskdatabase/00_risk_database_base.html' %}
+{% load static %}
+
+{% block titleblock %}
+    Risk database - button view
+{% endblock %}
+
+{% block contentblock %}
+    <div class="row">
+        <div class="col-1 risk_database_button_col">Col</div>
+        <div class="col-2 risk_database_button_col">Col</div>
+        <div class="col-4 risk_database_button_col">Col</div>
+        <div class="col-5 risk_database_button_col">Col</div>
+    </div>
+    <hr>
+
+
+    <!-- Headers -->
+    <div class="row">
+        <div class="col-2">
+            <p>Category</p>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-3">
+                    <p>Objective</p>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-5">
+                            <p>Risk</p>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Risk response</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-2">
+            <p>Category</p>
+        </div>
+        <div class="col-3">
+            <p>Objective</p>
+        </div>
+        <div class="col-5">
+            <p>Risk</p>
+        </div>
+        <div class="col">
+            <p>Risk response</p>
+        </div>
+    </div>
+
+    <!-- Body -->
+    {% for cat in risk_database %}
+        <div class="row">
+            <div class="col-2">
+                <p>
+                    <button class="btn btn-lg btn-light cat_btn">{{ cat.cat }}</button>
+                </p>
+            </div>
+            <div class="col">
+                {% for obj in cat.objs %}
+                    <div class="row">
+                        <div class="col-3">
+                            <p>
+                                <button class="btn btn-lg btn-light obj_btn">{{ obj.obj }}</button>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                            {% for risk in obj.risks %}
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p>
+                                            <button class="btn btn-lg btn-light risk_btn">{{ risk.risk }}</button>
+                                        </p>
+                                    </div>
+                                    <div class="col">
+                                        {% for rr in risk.rrs %}
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p>
+                                                        <button class="btn btn-lg btn-light rr_btn">{{ rr.rr }}</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

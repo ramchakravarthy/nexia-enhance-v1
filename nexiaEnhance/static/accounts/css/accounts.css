@@ -1,0 +1,42 @@
+.contentblock{
+    /*background-color: rgba(255,255,255,0.85);*/
+    /*border-radius: 25px;*/
+    /*padding: 2%;*/
+    /*color: black;*/
+    overflow: auto;
+}
+
+
+
+
+
+/*-------------------------------- View Firms  ---------------------------------*/
+
+table{
+    /*color: white;*/
+    border-radius: 25px;
+}
+
+td .desc_cell {
+    min-width: 150px;
+}
+
+#myTable>tbody>tr:nth-child(odd)>td{
+    /*background-color: lightgray; !* Choose your own color here *!*/
+}
+
+thead > tr{
+    background-color: #01272c;
+    color: white;
+}
+
+tbody > tr > td{
+    font-size: medium;
+    color: #01272c;
+}
+
+/*-------------------------------- End of View Register Table View ---------------------------------*/
+
+.accounts-content-row{
+    /*background-color: lightgray;*/
+}

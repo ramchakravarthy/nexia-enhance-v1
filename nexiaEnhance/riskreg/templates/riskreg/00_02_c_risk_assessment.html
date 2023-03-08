@@ -1,0 +1,213 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+
+{% block titleblock %}
+    Risk Register - Instructions: How to fill out a risk assessment
+{% endblock %}
+
+{% block bodyblock %}
+    <p>
+        <a href="{% url 'risk-register-2:instructions' %}">
+            <button type="button" class="btn btn-light">
+                <i class="bi bi-backspace-fill" style="color: white"></i> Back
+            </button>
+        </a>
+    </p>
+
+    <div class="container-fluid" style="height: 68vh; overflow: auto">
+
+
+        <p><strong>Tailoring</strong></p>
+        <p>The risk register must be tailored to the specific circumstances of the firm. It is not possible to
+            conceive of all the possible factors affecting a firm and thus it does not provide a definitive list of all
+            the quality objectives, quality risks and potential responses that may exist, and additional items may need
+            to be added in order to ensure that the risk assessment process is effective in ensuring that responses are
+            implemented that address all significant quality risks that may exist.</p>
+        <p></p>
+        <p>There are 6 categories of quality objectives and a number of objectives, risks and risk responses identified
+            by ISQM 1. Additional categories may be created for further quality objectives that are identified by
+            the firm, although this is expected to be rare.</p>
+        <p></p>
+        <p>
+            Firms who have filled out their quality management system using the excel spreadsheet provided on the Nexia
+            website can import their excel files into this platform using the "Import risk register" option available
+            under the "Risk register" option to the left.
+        </p>
+        <p>
+            Firms can add new risks by clicking on the "Create entry" option under the "Risk register" option on the
+            left. There are five types of entries that can be created:
+        </p>
+
+
+        <div class="card_block">
+            <div class="row">
+                <div class="col card_col" style="height: available;">
+                    <div class="card" style="color:white; background-color: #00B9B9; border-top-left-radius: 25px; border-bottom-right-radius: 25px;">
+                        <div class="card-header" style="height: available; color:#0c4128; background-color: white; border-top-left-radius: 25px;">
+                            <strong>
+                                1. Risk library entry
+                            </strong>
+                        </div>
+                        <div class="card-body" style="height: available; ">
+                            <p class="card-text" style="height: available; ">
+
+                                This it an entry from the risk library. Following the top-down approach, you can create
+                                a risk from the
+                                risk library. Whilst filling out the risk, there are a number of associated attributes
+                                that should be filled
+                                out. You can fill some of these as you create a risk and revisit them later to fill out
+                                the other details.
+                                <br><br>
+
+                                Once created, the risk and risk response can be edited but the quality objective
+                                category and quality
+                                objective cannot be edited, as per the instructions set out in the ISQM system
+                                instructions found
+                                <a href="{% url 'risk-register-2:instructions-isqm-system' %}">here</a>.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col card_col">
+                    <div class="card" style="color:white; background-color: #2E53A1; border-top-left-radius: 25px; border-bottom-right-radius: 25px; ">
+                        <div class="card-header" style="height: available; color:#2E53A1; background-color: white; border-top-left-radius: 25px;">
+                            <strong>
+                                2. Custom risk response
+                            </strong>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                This is where a user will create a custom/tailored risk response for a quality risk that
+                                has been identified
+                                in the risk library.
+                                <br>
+                                Unlike the risk library entry, the quality objective category and quality objective can
+                                be edited in
+                                addition to the quality risk and risk response of these entries.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col card_col">
+                    <div class="card" style="color:white; background-color: #841262; border-top-left-radius: 25px; border-bottom-right-radius: 25px; ">
+                        <div class="card-header" style="height: available; color:#841262; background-color: white; border-top-left-radius: 25px;">
+                            <strong>
+                                3. Custom risk and risk response
+                            </strong>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                This is where a user will create a custom/tailored risk and risk response for a quality
+                                objective that has
+                                been identified in the risk library.
+                                <br>
+                                The entry can be fully edited.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col card_col">
+                    <div class="card" style="color:white; background-color: #FBC311; border-top-left-radius: 25px; border-bottom-right-radius: 25px; ">
+                        <div class="card-header" style="height: available; color: #FBC311; background-color: white; border-top-left-radius: 25px;">
+                            <strong>
+                                4. Custom objective, risk and risk response
+                            </strong>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                This is where a user will create a custom/tailored quality objective, quality risk and
+                                risk response for a
+                                quality objective category that has been identified in the risk library.
+                                <br>
+                                The entry can be fully edited.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col card_col">
+                    <div class="card" style="color:white; background-color: #00323C; border-top-left-radius: 25px; border-bottom-right-radius: 25px; ">
+                        <div class="card-header" style="height: available; color:#00323C; background-color: white; border-top-left-radius: 25px;">
+                            <strong>
+                                5. Custom category, objective, risk and risk response
+                            </strong>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                This is where a user will create a custom/tailored quality objective category, quality
+                                objective, quality
+                                risk and risk response.
+                                <br>
+                                The entry can be fully edited.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--
+        <p><em><strong>1. Risk library entry</strong></em></p>
+        <p>
+            This it an entry from the risk library. Following the top-down approach, you can create a risk from the
+            risk library. Whilst filling out the risk, there are a number of associated attributes that should be filled
+            out. You can fill some of these as you create a risk and revisit them later to fill out the other details.
+        </p>
+        <p></p>
+        <p>
+            Once created, the risk and risk response can be edited but the quality objective category and quality
+            objective cannot be edited, as per the instructions set out in the ISQM system instructions found
+            <a href="{% url 'risk-register-2:instructions-isqm-system' %}">here</a>.
+        </p>
+        <p><em><strong>2. Custom risk response</strong></em></p>
+        <p>
+            This is where a user will create a custom/tailored risk response for a quality risk that has been identified
+            in the risk library.
+        </p>
+        <p></p>
+        <p>
+            Unlike the risk library entry, the quality objective category and quality objective can be edited in
+            addition to the quality risk and risk response of these entries.
+        </p>
+        <p><em><strong>3. Custom risk and risk response</strong></em></p>
+        <p>
+            This is where a user will create a custom/tailored risk and risk response for a quality objective that has
+            been identified in the risk library.
+        </p>
+        <p>The entry can be fully edited.</p>
+        <p></p>
+        <p><em><strong>4. Custom objective, risk and risk response</strong></em></p>
+        <p>
+            This is where a user will create a custom/tailored quality objective, quality risk and risk response for a
+            quality objective category that has been identified in the risk library.
+        </p>
+        <p>The entry can be fully edited.</p>
+        <p></p>
+        <p><em><strong>5. Custom category, objective, risk and risk response</strong></em></p>
+        <p>
+            This is where a user will create a custom/tailored quality objective category, quality objective, quality
+            risk and risk response.
+        </p>
+        <p>The entry can be fully edited.</p>
+        <p></p>
+        -->
+
+        <br>
+        <p><strong>Note: </strong>All risks should be signed off by the owner and the reviewer.</p>
+        <p></p>
+        <p>ISQM 1 and certain other standards do though set out a number of mandatory responses that should be
+            implemented by all firms unless they are deemed irrelevant to their practice. Care should be taken before
+            any of these responses are amended or deleted in order to ensure that firms comply with the requirements
+            of the regulatory framework.</p>
+        <p></p>
+        <p>Users of the Mercia audit methodology will find that it contains a number of forms and procedures that will
+            assist with completion of these responses, and these are highlighted here, as are other ways in which Mercia
+            can assist with implementing your system of quality management.</p>
+
+    </div>
+
+{% endblock %}

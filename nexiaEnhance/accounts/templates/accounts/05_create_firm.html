@@ -1,0 +1,16 @@
+{% extends 'accounts/00_accounts_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block titleblock %}
+    Firm administration - add a firm
+{% endblock %}
+
+{% block contentblock %}
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Submit" class="btn btn-light">
+        <a href="{% url 'accounts:view-firms' %} "><input type="button" value="Cancel" class="btn btn-danger"></a>
+    </form>
+{% endblock %}

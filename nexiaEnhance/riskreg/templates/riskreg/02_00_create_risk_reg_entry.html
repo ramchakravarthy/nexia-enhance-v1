@@ -1,0 +1,147 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/02_00_create_risk_reg_entry.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Risk Register - Create an entry
+{% endblock %}
+
+{% block bodyblock %}
+
+    <div class="container-fluid card_block">
+        <h5>Please select one of the following options</h5><br>
+        <div class="row">
+            <div class="col card_col">
+
+                <a href="{% url 'risk-register-2:create-risk-library-entry' %}">
+                    <!-- style="text-decoration: none; color: #0d5257; font-size: x-large" -->
+                    <div class="card text-center" style="color: #00B9B9 ; border-top-left-radius: 10%; border-bottom-right-radius: 10%;border-top-right-radius: 0%; border-bottom-left-radius: 0%">
+                        <div class="card-body">
+                            <br><i class="bi bi-pencil-square fa-8x"></i>
+                            <br>
+                            <h4 class="card-title"><div>Risk library entry</div></h4>
+                            <br>
+                        </div>
+                        <div class="card-footer">
+                            <i class="bi bi-1-square fa-2x"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col card_col">
+                <a href="{% url 'risk-register-2:custom-rr-entry' %}">
+                    <div class="card text-center" style="color: #2E53A1; border-top-left-radius: 10%; border-bottom-right-radius: 10%;border-top-right-radius: 0%; border-bottom-left-radius: 0%">
+                        <div class="card-body">
+                            <br><i class="bi bi-pencil-square fa-8x"></i>
+                            <br>
+                            <h4 class="card-title"><div>Custom risk response</div></h4>
+                            <br>
+                        </div>
+                        <div class="card-footer">
+                            <i class="bi bi-2-square fa-2x"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col card_col">
+                <a href="{% url 'risk-register-2:custom-r-rr-entry' %}">
+                    <div class="card text-center" style="color: #841262; border-top-left-radius: 10%; border-bottom-right-radius: 10%;border-top-right-radius: 0%; border-bottom-left-radius: 0%">
+                        <div class="card-body">
+                            <br><i class="bi bi-pencil-square fa-8x"></i>
+                            <br>
+                            <h4 class="card-title"><div>Custom risk and risk response</div></h4>
+                            <br>
+                        </div>
+                        <div class="card-footer">
+                            <i class="bi bi-3-square fa-2x"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col card_col">
+                <a href="{% url 'risk-register-2:custom-o-r-rr-entry' %}">
+                    <div class="card text-center" style="color: #FBC311; border-top-left-radius: 10%; border-bottom-right-radius: 10%;border-top-right-radius: 0%; border-bottom-left-radius: 0%">
+                        <div class="card-body">
+                            <br><i class="bi bi-pencil-square fa-8x"></i>
+                            <br>
+                            <h4 class="card-title"><div>Custom objective, risk and risk response</div></h4>
+                            <br>
+                        </div>
+                        <div class="card-footer">
+                            <i class="bi bi-4-square fa-2x"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col card_col">
+                <a href="{% url 'risk-register-2:create-custom-entry' %}">
+                    <div class="card text-center" style="border-top-left-radius: 10%; border-bottom-right-radius: 10%; border-top-right-radius: 0%; border-bottom-left-radius: 0%">
+                        <div class="card-body">
+                            <br><i class="bi bi-pencil-square fa-8x"></i>
+                            <br>
+                            <h4 class="card-title">
+                                <div>Custom category, objective, risk and risk
+                                    response
+                                </div>
+                            </h4>
+                            <br>
+                        </div>
+                        <div class="card-footer">
+                            <i class="bi bi-5-square fa-2x"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{#    <div class="container-fluid">#}
+{##}
+{#        <div class="row">#}
+{#            <div class="col card_col" style="padding: 5% 10%">#}
+{#                <a href="{% url 'risk-register-2:create-risk-library-entry' %}" style="text-decoration: none; color: #0d5257; font-size: x-large">#}
+{#                    <div class="card text-center selection_card" style="border-radius: 50px; border-color: #00b2a9; border-width: thick">#}
+{#                        <p>#}
+{##}
+{#                            <lord-icon#}
+{#                                    src="https://cdn.lordicon.com/wxnxiano.json"#}
+{#                                    trigger="morph"#}
+{#                                    colors="primary:#00b2a9,secondary:#0d5257"#}
+{#                                    style="width:250px;height:250px">#}
+{#                            </lord-icon>#}
+{#                        </p>#}
+{#                        <div class="card-body">#}
+{#                            <div class="container-fluid">#}
+{#                                <strong><p class="card-text create_entry_card">Create an entry from the risk library</p></strong>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="col card_col" style="padding: 5% 10%">#}
+{#                <a href="" style="text-decoration: none; color: #0d5257; font-size: x-large">#}
+{#                    <div class="card text-center" style="border-radius: 50px; border-color: #00b2a9; border-width: thick">#}
+{#                        <p>#}
+{#                            <lord-icon#}
+{#                                    src="https://cdn.lordicon.com/ufezupnm.json"#}
+{#                                    trigger="hover"#}
+{#                                    colors="primary:#0d5257,secondary:#00b2a9"#}
+{#                                    style="width:250px;height:250px">#}
+{#                            </lord-icon>#}
+{#                        </p>#}
+{#                        <div class="card-body">#}
+{#                            <div class="container-fluid">#}
+{#                                <strong><p class="card-text create_entry_card">Create a custom risk register entry</p></strong>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% load static %}
+
+<!-- Navbar -->
+            <!-- Nav bar alignment
+                The items within the navbar can be aligned using margin utilities.
+                - The .mx-auto class can be used to align the items to the center of the navbar.
+                - The .ms-auto class is used to align items to the right of the navbar.
+                - The .me-auto class is used to align items to the left of that navbar.
+            -->
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <img src="{% static 'images_dev/02_logos/01_nexia_enhance_white.png' %}" alt="Nexia Enhance" class="navbar-logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse ms-auto" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                            {% if user.is_authenticated %}
+
+                                <!-- Risk database options -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                       aria-expanded="false">
+                                        Risk library
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'risk_database:view-risk-database' %}">View risk library</a></li>
+
+                                        {% if is_nexia_superuser %}
+                                            <li><a class="dropdown-item" href="{% url 'risk_database:import-risk-database' %}">Import risk library</a></li>
+                                        {% endif %}
+
+                                        <li><a class="dropdown-item" href="{% url 'risk_database:export_risk_library' %}">Export risk library</a></li>
+                                    </ul>
+                                </li>
+
+                                <!-- Risk register options -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                       aria-expanded="false">
+                                        Risk register
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'risk_register:create-rd-entry' %}">Create risk library entry</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'risk_register:view-risk-register' %}">View risk register</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'risk_register:cat-list-view' %}">Cat List</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'risk_register:create-cat' %}">Create Cat</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'risk_register:create-obj' %}">Create Obj</a></li>
+                                    </ul>
+                                </li>
+
+                                {% if is_user_manager %}
+                                    {% if is_nexia_superuser %}
+                                        <!-- Superuser options -->
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                               data-bs-toggle="dropdown"
+                                               aria-expanded="false">
+                                                Firm management
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="{% url 'accounts:view-firms' %}">View
+                                                    firms</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'accounts:create-firm' %}">Add
+                                                    firm</a></li>
+                                            </ul>
+                                        </li>
+{#                                    {% else %}#}
+{#                                        No firm options#}
+                                    {% endif %}
+
+                                    <!-- User administration -->
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                                           data-bs-toggle="dropdown"
+                                           aria-expanded="false">
+                                            User management
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{% url 'accounts:view-users' %}">View
+                                                Users</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'accounts:create-user' %}">Add
+                                                user</a></li>
+                                        </ul>
+                                    </li>
+
+{#                                {% else %}#}
+{#                                    No user options#}
+                                {% endif %}
+
+                                <!-- User logout -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                       aria-expanded="false">
+                                        {{ user.first_name }} {{ user.last_name }}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Log out</a></li>
+                                    </ul>
+                                </li>
+
+                            {% else %}
+                                <!-- User login -->
+                                <li class="nav-item"><a href="{% url 'accounts:login' %}" class="nav-link">Log in</a></li>
+
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>

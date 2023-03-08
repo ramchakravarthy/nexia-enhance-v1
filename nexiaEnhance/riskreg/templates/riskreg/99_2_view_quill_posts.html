@@ -1,0 +1,22 @@
+{#------ THIS IS THE FIRST TRIAL WITH DIFFERENT LOOPS AND SLICES AND FUNCTIONS ------#}
+
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/03_01_create_deficiency.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Create deficiency
+{% endblock %}
+
+{% block bodyblock %}
+    <h3>Quill posts:</h3>
+    {% for post in quillposts %}
+        <p>
+            Quill content is : {{ post.content.html|safe }} and quill text is {{ post.text }}
+        </p>
+    {% endfor %}
+{% endblock %}

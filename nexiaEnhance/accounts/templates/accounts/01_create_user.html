@@ -1,0 +1,27 @@
+{% extends 'accounts/00_accounts_base.html' %}
+{% load static %}
+{%  load bootstrap5 %}
+
+{% block titleblock %}
+    User administration  - create a user
+    {% if is_not_blank %}
+        <br>
+        <h6><em>(Choose between 'Staff', 'Reviewer', 'Ultimate authority' and 'Nexia Enhance admin')</em></h6>
+    {% endif %}
+
+{% endblock %}
+
+{% block contentblock %}
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {% if is_not_blank %}
+            {% bootstrap_form user_form %}
+            {% bootstrap_form user_attributes_form %}
+            <input type="submit" value="Submit" class="btn btn-light">
+            <a href="{% url 'accounts:view-users' %}"><input type="button" value="Cancel" class="btn btn-danger"></a>
+            <input type="hidden" id="user_ref" name="user_ref" value={{ user_ref }}>
+        {% else %}
+            <h5>{{ error_text }}</h5>
+        {% endif %}
+    </form>
+{% endblock %}

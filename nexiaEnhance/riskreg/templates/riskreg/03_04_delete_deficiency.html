@@ -1,0 +1,134 @@
+{#------ THIS IS THE FIRST TRIAL WITH DIFFERENT LOOPS AND SLICES AND FUNCTIONS ------#}
+
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/02_01_risk_library_entry.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Risk register - delete deficiency
+{% endblock %}
+
+{% block bodyblock %}
+
+{#    <div class="row risk_reg_selection">#}
+{#            <div class="custom_risk_container">#}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <br>
+        <h3 style="color: red">Do you want to delete the following deficiency:</h3>
+        <br>
+
+
+        <h4>Deficiency</h4>
+
+        <p>{{ deficiency.identified_deficiency }}</p>
+
+
+        <h4>Associated risk response</h4>
+        <p>{{ deficiency.risk_response }}</p>
+        <br>
+        <h4 style="color: red">This action cannot be reversed</h4>
+        <br>
+        <input type="submit" class="btn btn-danger" value="Delete">
+        <a href="{% url 'risk-register-2:view-deficiencies' %}"><input type="button" value="Cancel"
+                                                                       class="btn btn-light"></a>
+
+
+    </form>
+
+
+{#                <hr>#}
+
+{##}
+{##}
+{#                <hr>#}
+{#                <div class="row">#}
+{#                    <div class="col-3">#}
+{#                        <strong>Deficiency</strong>#}
+{#                    </div>#}
+{#                    <div class="col">#}
+{#                        <p>{{ deficiency.identified_deficiency }}</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-3">#}
+{#                        <strong>Associated risk response</strong>#}
+{#                    </div>#}
+{#                    <div class="col">#}
+{#                        <p>{{ deficiency.risk_response }}</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <hr>#}
+
+{#                <div class="card " style="width: 50vw;">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">#}
+{#                            Deficiency:#}
+{#                        </h5>#}
+{#                        <p class="card-text">#}
+{#                            {{ deficiency.identified_deficiency }}#}
+{#                        </p>#}
+{#                        <hr>#}
+{#                        <h5 class="card-title">Associated risk response: </h5>#}
+{#                        <p class="card-text">{{ deficiency.risk_response }}</p>#}
+{#                        <hr>#}
+{##}
+{#                        <h4 class="card-title" style="color: red">This action cannot be reversed</h4>#}
+{#                        <a href="#" class="card-link">Card link</a>#}
+{#                        <a href="#" class="card-link">Another link</a>#}
+{#                        <input type="submit" class="btn btn-danger" value="Delete">#}
+{#                        <a href="{% url 'risk-register-2:view-deficiencies' %}"><input type="button" value="Cancel" class="btn btn-light"></a>#}
+{#                    </div>#}
+{#                </div>#}
+
+{#                <hr>#}
+{##}
+{#                <div class="card" style="width: 50vw;">#}
+{#                    <ul class="list-group list-group-flush">#}
+{#                        <li class="list-group-item">#}
+{#                            <strong>Deficiency: </strong>#}
+{#                            {{ deficiency.identified_deficiency }}#}
+{#                        </li>#}
+{#                        <li class="list-group-item">#}
+{#                            <strong>Associated risk response: </strong>#}
+{#                            {{ deficiency.risk_response }}#}
+{#                        </li>#}
+{#                        <li class="list-group-item">#}
+{#                            <h6 class="card-title" style="color: red">This action cannot be reversed</h6>#}
+{#                        <a href="#" class="card-link">Card link</a>#}
+{#                        <a href="#" class="card-link">Another link</a>#}
+{#                        <input type="submit" class="btn btn-danger" value="Delete">#}
+{#                        <a href="{% url 'risk-register-2:view-deficiencies' %}"><input type="button" value="Cancel" class="btn btn-light"></a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </div>#}
+{##}
+{#                <br>#}
+{#                <h4 style="color: red">This action cannot be reversed</h4>#}
+
+{#            </div>#}
+{#        </div>#}
+
+
+
+
+{##}
+{##}
+{#    <form method="POST">#}
+{#        {% csrf_token %}#}
+{#        <br>#}
+{#        <input type="submit" class="btn btn-danger" value="Delete">#}
+{##}
+{#        <a href="{% url 'risk-register-2:view-deficiencies' %}"><input type="button" value="Cancel" class="btn btn-light"></a>#}
+{#        <a href="{% url 'risk-register-2:view-risk-register' %}">#}
+{#            <button class="btn btn-light">Cancel</button>#}
+{#        </a>#}
+{#    </form>#}
+
+{% endblock %}

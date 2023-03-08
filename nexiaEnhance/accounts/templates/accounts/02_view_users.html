@@ -1,0 +1,71 @@
+{% extends 'accounts/00_accounts_base.html' %}
+
+{% block titleblock %}
+    User administration - view users
+{% endblock %}
+
+{% block contentblock %}
+    {% if user.is_authenticated %}
+        {% if is_nexia_superuser or is_user_manager %}
+            {% if users %}
+                <div class="table-responsive">
+                    <table class="table table-striped align-middle" id="myTable">
+                        <caption>
+                            <em>Please check with your administrator or person-in-charge before making any changes to users.</em>
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th>First name</th>
+                                <th>Last name</th>
+                                <th>Username</th>
+                                <th>email</th>
+                                <th>User role</th>
+                                {% if is_nexia_superuser %}
+                                    <th>Firm name</th>
+                                {% endif %}
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            {% for user in users %}
+                                <tr class="table-light">
+                                    <td>{{ user.first_name }}</td>
+                                    <td>{{ user.last_name }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.user_role }}</td>
+                                    {% if is_nexia_superuser %}
+                                        <td>{{ user.firm_name }}</td>
+                                    {% endif %}
+                                    <td>
+                                        <a href="{% url 'accounts:edit-user' pk=user.user_id %}" class="btn btn-xs btn-light" style="font-size: small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
+
+                                        <a href="{% url 'accounts:delete-user' pk=user.user_id %}" class="btn btn-xs btn-danger" style="font-size: small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-x-lg"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                There are no users currently registered.
+            {% endif %}
+            <a href="{% url 'accounts:create-user' %}"><input type="button" class="btn btn-light" value="Add new user"></a>
+        {% else %}
+            You are not authorised to view users. Please contact your IT administrator.
+        {% endif %}
+    {% else %}
+        Please login to continue.
+    {% endif %}
+
+
+{% endblock %}
+
+{% block script_block %}
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+{% endblock %}

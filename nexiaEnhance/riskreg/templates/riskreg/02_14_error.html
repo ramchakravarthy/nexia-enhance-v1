@@ -1,0 +1,35 @@
+{% extends '00_nexia_enhance_base.html' %}
+
+{% load static %}
+{% load bootstrap5 %}
+
+<!-- Stylesheet from source file -->
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskregister/css/999_OLD_04_a_risk_library_entry.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Risk register
+{% endblock %}
+
+<!-- Main Body -->
+{% block bodyblock %}
+
+    <br><br><br>
+    <!-- Error Alert -->
+    <div class="alert alert-danger alert-dismissible fade show">
+        <strong>Error!</strong> A problem has been occurred while submitting your data. Please try again.
+        <br><br>
+        <a href="{% url 'risk_register_2:risk_reg_home_view' %}">
+            <button type="button" class="btn btn-danger">Home</button>
+        </a>
+    </div>
+
+
+{% endblock %}
+
+
+<!-- Script from custom source file -->
+{% block script_block %}
+{% endblock %}
+

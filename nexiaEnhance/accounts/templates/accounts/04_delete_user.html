@@ -1,0 +1,36 @@
+{% extends 'accounts/00_accounts_base.html' %}
+
+{% block titleblock %}
+    User administration - delete user
+{% endblock %}
+
+{% block contentblock %}
+    {% if user.is_authenticated %}
+        <h3>Are you sure you want to delete {{ user.first_name }} {{ user.last_name }} ?</h3>
+        <br>
+        <h5><em>(This action cannot be reversed)</em></h5>
+        <br>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+               <div class="col-1">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+               </div>
+                <div class="col-1">
+                    <a href="{% url 'accounts:view-users' %} "><input type="button" class="btn btn-light" value="cancel"></a>
+               </div>
+            </div>
+            <p>
+
+
+            </p>
+
+        </form>
+
+    {% else %}
+        Please login to continue.
+    {% endif %}
+
+
+{% endblock %}

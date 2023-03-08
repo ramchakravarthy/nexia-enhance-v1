@@ -1,0 +1,160 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/03_02_view_deficiencies.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Identified deficiencies
+{% endblock %}
+
+<!--
+Exposing the firm to unnecessary levels of risk by taking on clients with an increased likelihood of committing illegal activity or otherwise exhibits issues with its integrity or ethical values.
+-->
+
+{% block bodyblock %}
+{#    <br><br>#}
+{##}
+{#    <button type="button" class="btn btn-secondary"#}
+{#        data-bs-toggle="tooltip" data-bs-placement="top"#}
+{#        data-bs-custom-class="custom-tooltip"#}
+{#        data-bs-title="This top tooltip is themed via CSS variables.">#}
+{#  Custom tooltip#}
+{#</button>#}
+{##}
+{#    <br><br><br>#}
+    <form method="post">
+
+        {% csrf_token %}
+        {% if is_deficiency_exists %}
+            <div class="table-responsive" style="overflow: auto; height: 75vh">
+                <table class="table table-striped" id="myTable">
+                    <thead>
+                        <tr style="background-color: #00323C; color: white; font-size: small;">
+                            <th>Quality Objective Category</th>
+                            <th>Quality Objective</th>
+                            <th>Quality Risk</th>
+                            <th>Risk Response</th>
+
+                            <th>Identified deficiency</th>
+                            <th>Immediate cause</th>
+                            <th>Comments</th>
+
+                            <th>Contributory cause 1</th>
+                            <th>Comments</th>
+
+                            <th>Contributory cause 2</th>
+                            <th>Comments</th>
+
+                            <th>Contributory cause 3</th>
+                            <th>Comments</th>
+
+                            <th>Root cause</th>
+                            <th>Comments</th>
+
+                            <th>Is the deficiency severe?</th>
+                            <th>Comments</th>
+
+                            <th>Is the deficiency pervasive?</th>
+                            <th>Comments</th>
+
+                            <th>Proposed remedial action</th>
+                            <th>Comments</th>
+                            <th>Status</th>
+
+                            <th>Conclusion</th>
+                            <th>Change following remedial action</th>
+
+                            <th>Preparer</th>
+                            <th>Sign off date</th>
+
+                            <th>Quality management head sign off</th>
+                            <th>Sign off date</th>
+
+                            <th>New risk response</th>
+
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for deficiency in deficiencies_dict %}
+                        <tr style="height:25px">
+                            <td class="c_tr">{{ deficiency.quality_objective_category }}</td>
+                            <td class="o_tr desc_cell">{{ deficiency.quality_objective }}</td>
+                            <td class="r_tr desc_cell">{{ deficiency.quality_risk }}</td>
+                            <td class="rr_tr">{{ deficiency.risk_response }}</td>
+
+                            <td class="rr_tr">{{ deficiency.identified_deficiency|safe }}</td>
+                            <td class="rr_tr">{{ deficiency.immediate_cause|safe }}</td>
+                            <td class="rr_tr">{{ deficiency.immediate_cause_reviewer_comments|safe }}</td>
+
+                            <td class="rr_tr">{{ deficiency.contributory_cause_1|safe }}</td>
+                            <td class="rr_tr">{{ deficiency.contributory_cause_1_reviewer_comments|safe }}</td>
+
+                            <td class="rr_tr">{{ deficiency.contributory_cause_2|safe }}</td>
+                            <td class="rr_tr">{{ deficiency.contributory_cause_2_reviewer_comments|safe }}</td>
+
+                            <td class="rr_tr">{{ deficiency.contributory_cause_3|safe }}</td>
+                            <td class="rr_tr">{{ deficiency.contributory_cause_3_reviewer_comments|safe }}</td>
+
+                            <td class="rr_tr">{{ deficiency.root_cause|safe }}</td>
+                            <td class="rr_tr">{{ deficiency.root_cause_reviewer_comments|safe }}</td>
+
+                            <td class="">{{ deficiency.is_severe }}</td>
+                            <td class="rr_tr">{{ deficiency.is_severe_comments|safe }}</td>
+
+                            <td class="">{{ deficiency.is_pervasive }}</td>
+                            <td class="rr_tr">{{ deficiency.is_pervasive_comments|safe }}</td>
+
+                            <td class="rr_tr">{{ deficiency.proposed_remedial_action|safe }}</td>
+                            <td class="rr_tr">{{ deficiency.proposed_remedial_action_reviewer_comments|safe }}</td>
+                            <td class="rr_tr">{{ deficiency.proposed_remedial_action_status }}</td>
+
+                            <td class="rr_tr">{{ deficiency.remedial_action_conclusion|safe }}</td>
+                            <td class="rr_tr">{{ deficiency.remedial_action_change|safe }}</td>
+
+                            <td class="">{{ deficiency.preparer_signature }}</td>
+                            <td class="c_tr">{{ deficiency.preparer_signature_date }}</td>
+
+                            <td class="">{{ deficiency.quality_management_head_signature }}</td>
+                            <td class="c_tr">{{ deficiency.quality_management_head_signature_date }}</td>
+
+                            <td class="rr_tr">{{ deficiency.new_risk_response }}</td>
+
+                            <td>
+                                <button class="btn btn-sm btn-light" type="submit" value="Update existing risk response" name={{ deficiency.identified_deficiency_id }} data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Update existing risk response" style="color: white; font-weight: bold; background-color: #ED9034">
+                                    <i class="bi bi-arrow-clockwise"></i>
+                                </button>
+
+                                <a class="btn btn-sm btn-light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit"
+                                   href="{% url 'risk_register_2:edit-deficiency' pk=deficiency.identified_deficiency_id %}">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+
+                                <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete"
+                                   href="{% url 'risk_register_2:delete-deficiency' pk=deficiency.identified_deficiency_id %}">
+                                    <i class="bi bi-x-lg"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <h6>There are no deficiencies recorded. Please view the risk register and create a deficiency.</h6>
+        {% endif %}
+    </form>
+{% endblock %}
+
+
+{% block script_block %}
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+{% endblock %}

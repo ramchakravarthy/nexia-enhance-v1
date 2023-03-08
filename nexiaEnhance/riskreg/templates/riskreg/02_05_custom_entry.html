@@ -1,0 +1,159 @@
+{#------ THIS IS THE FIRST TRIAL WITH DIFFERENT LOOPS AND SLICES AND FUNCTIONS ------#}
+
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/02_01_risk_library_entry.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Risk library selection
+{% endblock %}
+
+{% block bodyblock %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row risk_reg_selection" style="padding: 1% 0%;">
+            <div class="custom_risk_container">
+                <p>Quality objective category</p>
+                <p><textarea class="form-control" type="text-area" placeholder="Enter a quality objective category"
+                             name="quality_objective_category" value="This is a placeholder value" required></textarea>
+                </p>
+                <p>Quality objective</p>
+                <p><textarea class="form-control" type="text" placeholder="Enter a quality objective"
+                             name="quality_objective" value="This is a placeholder value" required></textarea></p>
+                <p>Quality risk</p>
+                <p><textarea class="form-control" type="text" placeholder="Enter a quality risk" name="quality_risk"
+                             value="This is a placeholder value"
+                             required></textarea></p>
+                <p>Risk response</p>
+                <p><textarea class="form-control" type="text" placeholder="Enter a risk response" name="risk_response"
+                             required></textarea></p>
+
+                <div class="row">
+                    <div class="col">
+                        <p>Risk response mandatory?</p>
+                        <p><input class="form-control" type="text" placeholder="No" aria-label="Disabled input example"
+                                  disabled
+                                  name="risk_response_mandatory"></p>
+                    </div>
+                    <div class="col">
+                        <p>Firm size</p>
+                        <p><input class="form-control" type="text" placeholder="All" aria-label="Disabled input example"
+                                  disabled
+                                  name="firm_size"></p>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p>Owner</p>
+                        <p><input class="form-control" type="text" placeholder="Enter the owner name" name="owner"></p>
+                    </div>
+                    <div class="col">
+                        <p>Risk response type</p>
+                        <p>
+                            <select class="form-select" name="response_type">
+                                <option selected>Select a response type</option>
+                                <option value="off_the_shelf_software">Off-the-shelf software
+                                </option>
+                                <option value='in-house_software'>In-house software</option>
+                                <option value='certificates'>Certificates</option>
+                                <option value='documented_policy'>Documented policy</option>
+                                <option value='documented_procedure'>Documented procedure</option>
+                                <option value='other'>Other</option>
+                            </select>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p>Risk response status</p>
+                        <p>
+                            <select class="form-select" name="response_status">
+                                <option selected>Select a response status</option>
+                                <option value="in_place">in place</option>
+                                <option value="in_progress">in progress</option>
+                                <option value="yet_to_be_started">yet to be started</option>
+                            </select>
+                        </p>
+
+                    </div>
+                    <div class="col">
+                        <p>Review frequency</p>
+                        <p>
+                            <select class="form-select" name="review_frequency">
+                                <option selected>Select a review frequency</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                                <option value="annually">Annually</option>
+                            </select>
+                        </p>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col">
+                        <p>Comments</p>
+                        <p><textarea class="form-control" type="text" placeholder="Enter your comments"
+                                     name="comments"></textarea></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p>Sign off owner</p>
+                        <p><input class="form-control" type="text" placeholder="Sign off owner" name="sign_off_owner">
+                        </p>
+                        </p>
+                        </p>
+
+                    </div>
+                    <div class="col">
+                        <p>Sign off reviewer</p>
+                        <p><input class="form-control" type="text" placeholder="Sign off reviewer"
+                                  name="sign_off_reviewer">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="submit" class='btn btn-light' value="Submit">
+        <a href="{% url 'risk_register_2:risk_reg_home_view' %}" class="btn btn-danger">Cancel</a>
+    </form>
+
+{% endblock %}
+
+
+{% block script_block %}
+    <script>
+        function display_attributes(rr) {
+            {#document.write(rr)#}
+            var elements = document.getElementsByClassName(rr+"_attributes" )
+            var checkbox_element = document.getElementById(rr+"_selection")
+            var tr_row_element = document.getElementById(rr+"_row")
+            var td_elements = document.getElementsByClassName('rr_td '+rr);
+
+            if (checkbox_element.checked == true){
+                for (var i = 0; i < elements.length ; i++){
+                    elements[i].style.display = 'block';
+                }
+                tr_row_element.style.backgroundColor = 'rgba(202,15,100,0.05)';
+            }
+            else{
+                for (var i =0; i<elements.length;i++){
+                    elements[i].style.display='none';
+                }
+                tr_row_element.style.backgroundColor = 'transparent';
+            }
+
+        }
+    </script>
+{% endblock %}

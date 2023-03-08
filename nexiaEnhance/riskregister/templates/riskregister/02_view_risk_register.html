@@ -1,0 +1,99 @@
+{#{% extends 'accounts/00_accounts_base.html' %}#}
+{% extends '00_nexia_enhance_base.html' %}
+
+{% load static %}
+{% load bootstrap5 %}
+
+<!-- Stylesheet from source file -->
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskregister/css/02_view_risk_register.css' %}">
+{% endblock %}
+
+
+<!-- Main Body -->
+{% block bodyblock %}
+
+    <div class="row accounts-content-row">
+{#        <div class="col"></div>#}
+        <div class="col">
+
+            <!-- Title -->
+            <div class="container-fluid titleblock">
+                <h3>
+                    Risk register
+                </h3>
+                <hr>
+            </div>
+
+            <!-- Main Body Content-->
+            <div class="container-fluid contentblock">
+                <br>
+                {% if user.is_authenticated %}
+                    <div class="table-responsive">
+                        <table class="table table-striped align-middle" id="myTable">
+                            <caption>
+                                ...
+                            </caption>
+                            <thead>
+                                <tr class="align-content-center">
+                                    <th>Quality objective category</th>
+                                    <th>Quality objective</th>
+                                    <th>Quality risk</th>
+                                    <th>Risk response</th>
+                                    <th>Owner</th>
+                                    <th>Response type</th>
+                                    <th>Response source</th>
+                                    <th>Response status</th>
+                                    <th>Comments</th>
+                                    <th>Review frequency</th>
+                                    <th>Created by</th>
+                                    <th>Preparer sign off</th>
+                                    <th>Reviewer sign off</th>
+                                    <th>Entry type</th>
+                                    <th>Risk database RR id</th>
+                                    <th>Firm name id</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                {% for risk in risklibrary %}
+                                    <tr class="table-light">
+                                        <td class="c_tr"> {{ risk.quality_objective_category }} </td>
+                                        <td class="o_tr"> {{ risk.quality_objective }} </td>
+                                        <td class="r_tr"> {{ risk.quality_risk }} </td>
+                                        <td class="rr_tr"> {{ risk.risk_response }} </td>
+                                        <td> {{ risk.owner }} </td>
+                                        <td> {{ risk.response_type }} </td>
+                                        <td> {{ risk.risk_response_source }} </td>
+                                        <td> {{ risk.response_status }} </td>
+                                        <td> {{ risk.comments }} </td>
+                                        <td> {{ risk.frequency_of_review }} </td>
+                                        <td> {{ risk.created_by }} </td>
+                                        <td> {{ risk.sign_off_owner }} </td>
+                                        <td> {{ risk.sign_off_reviewer }} </td>
+                                        <td> {{ risk.entry_type }} </td>
+                                        <td> {{ risk.rd_risk_response_id }} </td>
+                                        <td> {{ risk.firm_name_id }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    Please login to continue.
+                {% endif %}
+            </div>
+        </div>
+{#        <div class="col"></div>#}
+    </div>
+
+{% endblock %}
+
+<!-- Script from custom source file -->
+
+{% block script_block %}
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+{% endblock %}

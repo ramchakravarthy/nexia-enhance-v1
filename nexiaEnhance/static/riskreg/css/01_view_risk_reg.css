@@ -1,0 +1,58 @@
+/*-------------------------------- View Register Table View ---------------------------------*/
+
+/*td .desc_cell {*/
+/*    min-width: 150px;*/
+/*}*/
+
+/*#myTable>tbody>tr:nth-child(odd)>td{*/
+/*    background-color: lightgray; !* Choose your own color here *!*/
+/*}*/
+
+.view_register_table{
+    /*overflow: auto;*/
+    max-width: 80vw;
+    /*max-height: 85vh;*/
+}
+
+#risk_reg_table{
+    overflow: auto;
+    max-width: 80vw;
+    height: 80vh;
+}
+
+
+
+table{
+    font-size: small;
+    height: 50vh;
+}
+
+thead > tr > th{
+    background-color: #00323C;
+}
+
+tbody > tr > th{
+    font-size: small;
+}
+
+tbody > tr > td{
+    font-size: small;
+}
+
+.c_tr{
+    min-width: 11vw;
+}
+
+.o_tr{
+    min-width: 15vw;
+}
+
+.r_tr{
+    min-width: 15vw;
+}
+
+.rr_tr{
+    min-width: 20vw;
+}
+
+/*-------------------------------- End of View Register Table View ---------------------------------*/

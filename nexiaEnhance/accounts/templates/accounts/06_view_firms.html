@@ -1,0 +1,56 @@
+{% extends 'accounts/00_accounts_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block titleblock %}
+    Firm administration - view firms
+{% endblock %}
+
+{% block contentblock %}
+    {% if user.is_authenticated %}
+        {% if is_nexia_superuser %}
+            {% if firm_list %}
+                <table class="table table-striped align-middle" id="myTable">
+                        <caption>
+                            <em>Please check with your administrator or person-in-charge before making any changes to firms.</em>
+                        </caption>
+                    <thead>
+                        <tr>
+                            <th>Firm name</th>
+                            <th>Firm domain</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for firm in firm_list %}
+                            <tr>
+                                <td>{{ firm.firm_name }}</td>
+                                <td>{{ firm.firm_domain }}</td>
+                                <td>
+                                    <a href="{% url 'accounts:edit-firm' pk=firm.firm_id %}" class="btn btn-xs btn-light" style="font-size: small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
+                                    <a href="{% url 'accounts:delete-firm' pk=firm.firm_id %}" class="btn btn-xs btn-danger" style="font-size: small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-x-lg"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                There are no firms currently registered
+            {% endif %}
+            <a href="{% url 'accounts:create-firm' %}"><input type="button" class="btn btn-light" value="add new firm"></a>
+            <a href="{% url 'accounts:import-firms' %}"><input type="button" class="btn btn-light" value="import firms"></a>
+        {% else%}
+            You are not authorised to view firms. Contact your IT administrator.
+        {% endif %}
+    {% else%}
+        You are not authorised to view firms. Contact your IT administrator.
+    {% endif %}
+{% endblock %}
+
+{% block script_block %}
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+{% endblock %}

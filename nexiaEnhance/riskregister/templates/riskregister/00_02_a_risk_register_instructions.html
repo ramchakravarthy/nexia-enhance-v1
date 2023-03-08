@@ -1,0 +1,87 @@
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static '02_risk_register/css/00_a_risk_reg_instructions.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Risk Register - Instructions
+{% endblock %}
+
+{% block bodyblock %}
+
+    <div class="container-fluid">
+
+        <h5>Select one of the following options</h5><br>
+        <div class="row">
+            <div class="col card_col" style="padding: 5% 5%">
+                <a href="https://nexia.com/members-area/services/audit/quality-guide/"
+                   style="text-decoration: none; color: #0d5257; font-size: x-large">
+                    <div class="card text-center"
+                         style="border-radius: 50px; border-color: #00b2a9; border-width: thick">
+                        <p>
+                            <lord-icon
+                                    src="https://cdn.lordicon.com/meypkgwe.json"
+                                    trigger="hover"
+                                    colors="primary:#0d5257,secondary:#00b2a9"
+                                    style="width:250px;height:250px">
+                            </lord-icon>
+                        </p>
+                        <div class="card-body">
+                            <div class="container-fluid">
+                                <strong><p class="card-text create_entry_card">What is in the ISQM system</p></strong>
+                            </div>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col card_col" style="padding: 5% 5%">
+                <a href="{% url 'risk_register:instructions-risk-assessment' %}"
+                   style="text-decoration: none; color: #0d5257; font-size: x-large">
+                    <div class="card text-center"
+                         style="border-radius: 50px; border-color: #00b2a9; border-width: thick">
+                        <p>
+                            <lord-icon
+                                    src="https://cdn.lordicon.com/meypkgwe.json"
+                                    trigger="hover"
+                                    colors="primary:#0d5257,secondary:#00b2a9"
+                                    style="width:250px;height:250px">
+                            </lord-icon>
+                        </p>
+                        <div class="card-body">
+                            <div class="container-fluid">
+                                <strong><p class="card-text create_entry_card">How to fill out a risk assessment</p>
+                                </strong>
+                            </div>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col card_col" style="padding: 5% 5%">
+                <a href="https://nexia.com/assets/files/Nexia%20Enhance%20.zip"
+                   style="text-decoration: none; color: #0d5257; font-size: x-large">
+                    <div class="card text-center"
+                         style="border-radius: 50px; border-color: #00b2a9; border-width: thick">
+                        <p>
+                            <lord-icon
+                                    src="https://cdn.lordicon.com/meypkgwe.json"
+                                    trigger="hover"
+                                    colors="primary:#0d5257,secondary:#00b2a9"
+                                    style="width:250px;height:250px">
+                            </lord-icon>
+                        </p>
+                        <div class="card-body">
+                            <div class="container-fluid">
+                                <strong><p class="card-text create_entry_card">Available resources</p></strong>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{#------ THIS IS THE FIRST TRIAL WITH DIFFERENT LOOPS AND SLICES AND FUNCTIONS ------#}
+
+{% extends '00_nexia_enhance_base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'riskreg/css/02_01_risk_library_entry.css' %}">
+{% endblock %}
+
+{% block titleblock %}
+    Update risk library entry
+{% endblock %}
+
+{% block bodyblock %}
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="row risk_reg_selection">
+            <div class="custom_risk_container">
+                <div class="row">
+                    <div class="col-3">
+                        <strong>Quality Objective Category</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{ risk_reg_entry.quality_objective_category }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <strong>Quality Objective</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{ risk_reg_entry.quality_objective }}</p>
+                    </div>
+                </div>
+{#                <div class="row">#}
+{#                    <div class="col-3">#}
+{#                        <strong>Quality Risk</strong>#}
+{#                    </div>#}
+{#                    <div class="col">#}
+{#                        <p>{{ risk_reg_entry.quality_risk }}</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-3">#}
+{#                        <strong>Risk response</strong>#}
+{#                    </div>#}
+{#                    <div class="col">#}
+{#                        <p>{{ risk_reg_entry.risk_response }}</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <p>Quality objective category: {{ risk_reg_entry.quality_objective_category }}</p>#}
+{#                <p>Quality objective category: {{ risk_reg_entry.quality_objective }}</p>#}
+{#                <p>Quality objective category: {{ risk_reg_entry.quality_risk }}</p>#}
+{#                <p>Quality objective category: {{ risk_reg_entry.risk_response }}</p>#}
+
+                {% bootstrap_form form %}
+                <input type="hidden" name="rr_id" value="{{ risk_reg_entry.id }}">
+            </div>
+        </div>
+
+        <input type="submit" class='btn btn-light' value="Submit">
+        <a href="{% url 'risk-register-2:view-risk-register' %}">
+            <button class="btn btn-danger">Cancel</button>
+        </a>
+    </form>
+
+{% endblock %}
+
+
+{% block script_block %}
+    <script>
+        function display_attributes(rr) {
+            {#document.write(rr)#}
+            var elements = document.getElementsByClassName(rr+"_attributes" )
+            var checkbox_element = document.getElementById(rr+"_selection")
+            var tr_row_element = document.getElementById(rr+"_row")
+            var td_elements = document.getElementsByClassName('rr_td '+rr);
+
+            if (checkbox_element.checked == true){
+                for (var i = 0; i < elements.length ; i++){
+                    elements[i].style.display = 'block';
+                }
+                tr_row_element.style.backgroundColor = 'rgba(202,15,100,0.05)';
+            }
+            else{
+                for (var i =0; i<elements.length;i++){
+                    elements[i].style.display='none';
+                }
+                tr_row_element.style.backgroundColor = 'transparent';
+            }
+
+        }
+    </script>
+{% endblock %}

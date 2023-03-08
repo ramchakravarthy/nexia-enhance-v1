@@ -1,0 +1,132 @@
+/*body, html {*/
+/*    !*height: 100vh;*!*/
+/*    width: available; height: 98vh;*/
+/*    margin: 0;*/
+/*    color: #01272c;*/
+/*}*/
+
+body {
+    /*background-color: lightgray;*/
+    font-family: Tahoma;
+    color: #00323C;
+}
+
+.row_body{
+    background-color: lightgray;
+    width: available;
+    height: 98vh;
+    margin: 0%;
+    overflow: auto;
+}
+
+/*.mainbody_col {*/
+/*    height: 100vh;*/
+/*}*/
+
+.mainbodycontent {
+    margin:0.5%;
+    background-color: whitesmoke;
+    box-shadow: 10px 10px 5px grey;
+    border-radius: 25px;
+    padding: 2% 3%;
+
+
+    /*background-color: white;*/
+    /*border-radius: 25px;*/
+    /*color: #01272c;*/
+    max-width: 85vw;
+    /*box-shadow: 10px 10px 5px grey;*/
+}
+
+/*.title_block{*/
+/*    margin-top: 0.5%;*/
+/*    padding: 1% 2%;*/
+/*    height: 8vh;*/
+/*}*/
+
+/*.mainbodycontent{*/
+/*    padding: 2%;*/
+/*    height: 85vh;*/
+/*}*/
+
+/* ----------------Buttons - submit, cancel, etc---------------- */
+.btn-light{
+    background-color: #00B9B9;
+    color: white;
+}
+
+.btn-light:hover{
+    background-color: rgba(0,185,185,0.8);
+    color: white;
+}
+
+.btn-danger{
+    background-color: #CA1C66;
+    /*background-color: rgba(202,28,102,1);*/
+}
+
+.btn-danger:hover{
+    background-color: rgba(202,28,102,0.8);
+}
+
+
+/* ----------------Sidebar---------------- */
+
+.sidebar {
+    min-width: 12vw;
+    height: auto;
+    margin: 0.5%;
+    border-radius: 25px;
+    /*margin: 1%;*/
+    background-color: #00323C;
+    background-image: linear-gradient(to bottom, rgba(0,185,185,1), rgba(0,50,60,1));
+    color: white;
+    overflow: auto;
+    box-shadow: 10px 10px 5px grey;
+}
+
+.sidebar_background_image{
+    position: fixed;
+}
+
+img.sidebar_logo {
+    width: 10vw;
+    text-align: center;
+    align-content: center;
+    padding: 2vw 0.5vw 1vw;
+}
+
+
+ul.list-unstyled {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+    text-decoration: none;
+}
+
+button.level_1, a.level_2 {
+    color: white;
+    align-content: start;
+    text-align: start;
+}
+
+button + .level_1 {
+    font-size: medium;
+}
+
+button.level_1:hover, a.level_2:hover {
+    color: lightgray;
+}
+
+.level_2 {
+    margin-left: 8px;
+    color: white;
+}
+
+a.level_2 {
+    font-size: small;
+    text-decoration: none;
+    color: white;
+}
+
+/* ----------------End of Sidebar---------------- */
